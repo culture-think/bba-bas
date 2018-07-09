@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    
+	<!-- 让Spring通过自动扫描来查询和管理Controller -->
+	<context:component-scan base-package="com.loongtian.admin.controller" />
+	<context:component-scan base-package="com.loongtian.auth.controller" />
+	<context:component-scan base-package="com.loongtian.cotrunk.controller" />
+
+	<!-- 支持spring mvc新的注解类型 @Controller programming model 详细spring3.0手册 15.12.1 mvc:annotation-driven -->
+	<mvc:annotation-driven />
+  
+	<!-- 对模型视图名称的解析, 即在模型视图名称添加前后缀, 在requestmapping输入的地址后自动调用该类进行视图解析 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+	</bean>
+	  
+</beans>  

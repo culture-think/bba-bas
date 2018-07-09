@@ -1,0 +1,50 @@
+/* here you can put your own css to customize and override the theme */
+
+.page-header.custom {
+	position: fixed; 
+	width: 100%; 
+	height: 80px; 
+	z-index: 10; 
+	background-color: #999; 
+	background-image:url('/image/hd.jpg');
+	background-size:100% 100%;
+    background-repeat: no-repeat;
+}
+
+.page-footer.custom {
+	position: fixed; 
+	bottom: 0; 
+	width: 100%; 
+	height: 40px; 
+	z-index: 11; 
+	background-color: blue; 
+	background-image:url('/image/ft.jpg');
+	background-size:100% 100%;
+	background-repeat: no-repeat;
+}
+
+.page-content-wrapper .page-content.custom {
+	margin-left: 0;
+}
+
+@media screen and (min-width:1920px){
+	.page-header.custom{
+		height: 112px;
+		background-image:url('/image/hd1920.jpg');
+	}
+	
+	.page-content-wrapper .page-content{
+		height: 1080px;
+	}
+	
+	.page-footer.custom{
+		height: 80px;	
+		background-image:url('/image/ft1920.jpg');
+	}
+	.page-header-fixed .page-container {
+	    margin-top: 80px;
+	}
+}
+.modal{
+	width: 666px;
+}

@@ -1,0 +1,30 @@
+.menu {
+	background: #2a6ab4;
+	padding: 10px 10px;
+	font-weight: 500;
+	border-radius: 10px;
+	margin-left: 10px;
+	list-style: none;
+	float: left;
+	width: 12.5%;
+	text-align: center;
+}
+
+.menu.not-implemented {
+	background: #808080;
+}
+
+.menu-div {
+	margin: 70px auto;
+}
+
+.menu-group {
+	margin: 10px auto;
+	width: 75%;
+}
+
+.menu a {
+	text-decoration: none;
+	font-size: 18px;
+	color: white;
+}
