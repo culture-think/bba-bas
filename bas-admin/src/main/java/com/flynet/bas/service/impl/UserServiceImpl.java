@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.flynet.bas.dao.UserDao;
-import com.flynet.bas.exception.DesException;
+import com.flynet.bas.exception.FlyNetException;
 import com.flynet.bas.model.User;
 import com.flynet.bas.service.UserService;
 
@@ -65,7 +65,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User add(User user) throws DesException {
+	public User add(User user) throws FlyNetException {
 		String id = UUID.randomUUID().toString().replaceAll("-", "");
 		user.setId(id);
 		
@@ -95,14 +95,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User update(User user) throws DesException {
+	public User update(User user) throws FlyNetException {
 		userDao.updateUser(user);
 
 		return user;
 	}
 
 	@Override
-	public void modifyPassword(User user) throws DesException {
+	public void modifyPassword(User user) throws FlyNetException {
 		userDao.modifyPassword(user);
 
 	}

@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.flynet.bas.exception.DesException;
+import com.flynet.bas.exception.FlyNetException;
 import com.flynet.bas.model.User;
 import com.flynet.bas.security.IUserDetailsWrapper;
 import com.flynet.bas.security.UserDetailsWrapper;
@@ -119,7 +119,7 @@ public class UserController {
 	public User addUser(@RequestBody User user, HttpServletResponse response) {
 		try {
 			user = userService.add(user);
-		} catch (DesException e) {
+		} catch (FlyNetException e) {
 			e.printStackTrace();
 			
 			response.setStatus(e.getErrorCode());
@@ -141,7 +141,7 @@ public class UserController {
 		
 		try {
 			user = userService.update(user);
-		} catch (DesException e) {
+		} catch (FlyNetException e) {
 			e.printStackTrace();
 			
 			response.setStatus(e.getErrorCode());
@@ -157,7 +157,7 @@ public class UserController {
 		
 		try {
 			userService.modifyPassword(user);
-		} catch (DesException e) {
+		} catch (FlyNetException e) {
 			e.printStackTrace();
 			
 			response.setStatus(e.getErrorCode());

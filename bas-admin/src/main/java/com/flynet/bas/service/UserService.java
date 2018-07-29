@@ -22,7 +22,7 @@ package com.flynet.bas.service;
 import java.util.List;
 import java.util.Map;
 
-import com.flynet.bas.exception.DesException;
+import com.flynet.bas.exception.FlyNetException;
 import com.flynet.bas.model.User;
 
 
@@ -57,7 +57,7 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	User add(User user) throws DesException;
+	User add(User user) throws FlyNetException;
 	
 	/**
 	 * 删除用户
@@ -69,12 +69,12 @@ public interface UserService {
 	 * 修改用户
 	 * @param user
 	 */
-	User update(User user) throws DesException;
+	User update(User user) throws FlyNetException;
 	
 	/**
 	 * 修改密码
 	 * @param user
-	 * @throws DesException
+	 * @throws FlyNetException
 	 */
-	void modifyPassword(User user) throws DesException;
+	void modifyPassword(User user) throws FlyNetException;
 }
