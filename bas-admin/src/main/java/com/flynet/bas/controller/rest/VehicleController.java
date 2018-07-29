@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.flynet.bas.model.Vehicle;
 import com.flynet.bas.service.VehicleService;
@@ -40,10 +39,11 @@ public class VehicleController {
 	@RequestMapping(value = "/vehicles", method = RequestMethod.GET)
 	public List<Vehicle> getVehicle(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		String available = request.getParameter("available");
-		if(available != null){
-			parameters.put("available", Boolean.parseBoolean(available));
+		String projectId = request.getParameter("projectId");
+		if(projectId != null){
+			parameters.put("projectId", projectId);
 		}
+		
 		List<Vehicle> dataList = vehicleService.getList(parameters);
 		return dataList;
 	}	
@@ -90,23 +90,6 @@ public class VehicleController {
 	@RequestMapping(value = "/vehicles/{id}", method = RequestMethod.DELETE)
 	public void deleteVehicle(@PathVariable String id, HttpServletResponse response){
 		vehicleService.delete(id);
-	}
-	
-	/**
-	 * Excel文件上传
-	 * @param file
-	 * @return
-	 * @throws Exception 
-	 * @throws IOException 
-	 */
-	@RequestMapping(value = "/vehicles/upload-excel", method = RequestMethod.POST)
-	public void uploadExcel(final MultipartFile file) throws Exception{
-		if(file.isEmpty()){
-			throw new Exception();
-		}
-		
-		vehicleService.upload(file.getInputStream(), file.getOriginalFilename());
-		//throw new Exception();
 	}
 	
 }

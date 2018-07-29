@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.flynet.bas.model.Project;
+import com.flynet.bas.model.ProjectUser;
+import com.flynet.bas.model.ProjectVehicle;
 
 /**
  *
@@ -57,5 +59,17 @@ public interface ProjectService {
 	 * @param entity
 	 * @return
 	 */
-	List<Project> update(Project entity);
+	Project update(Project entity);
+	
+	/**
+	 * 修改项目用户列表
+	 * @param projectUsers
+	 */
+	void updateUsers(List<ProjectUser> projectUsers);
+	
+	/**
+	 * 修改项目车辆列表
+	 * @param projectVehicles
+	 */
+	void updateVehicles(List<ProjectVehicle> projectVehicles);
 }

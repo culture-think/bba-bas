@@ -63,10 +63,16 @@ public class UserController {
 	public List<User> getUsers(HttpServletRequest request, HttpServletResponse response) {
 		Map<String, Object> parameters = new HashMap<String, Object>();
 		
+		String projectId = request.getParameter("projectId");
+		if(projectId != null){
+			parameters.put("projectId", projectId);
+		}
+		
 		String type = request.getParameter("type");
 		if(type != null){
 			parameters.put("type", new Integer(type));
 		}
+		
 		
 		List<User> dataList = userService.getList(parameters);
 		
