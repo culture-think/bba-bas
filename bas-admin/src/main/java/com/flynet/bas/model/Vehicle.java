@@ -29,66 +29,30 @@ public class Vehicle {
 	 */
 	private String id;
 	/**
-	 * VIN#
+	 * Order
 	 */
-	private String vinCode;
+	private Integer order;
 	/**
-	 * V#
+	 * Type
 	 */
-	private String vCode;
+	private String type;
 	
 	/**
-	 * 
+	 * Engine
 	 */
-    private String edrMlogSn;
+    private String engine;
 	/**
-	 * 
+	 * Tire
 	 */    
-    private String edrWifiModuleSn;
+    private String tire;
 	/**
-	 * 
+	 * VIN
+	 */
+	private String vin;
+	/**
+	 * I-Level
 	 */    
-    private String arcosSn;
-	/**
-	 * 
-	 */    
-    private String carOwner;
-	/**
-	 * 
-	 */
-    private String edrType;
-	/**
-	 * Arcos数据文件路径
-	 */
-	private String arcosFilePath;
-	/**
-	 * EDR数据文件路径
-	 */
-	private String edrFilePath;
-	/**
-	 * Arcos数据传输路径
-	 */
-	private String arcosTransmissionPath;
-	/**
-	 * EDR数据传输路径
-	 */
-	private String edrTransmissionPath;	
-	/**
-	 * Arcos数据备份路径
-	 */
-	private String arcosBackupPath;
-	/**
-	 * EDR数据备份路径
-	 */
-	private String edrBackupPath;	
-	/**
-	 * 车辆图片路径
-	 */
-	private String picName;
-	/**
-	 * 是否可用
-	 */
-	private Boolean available;
+    private String iLevel;
 	/**
 	 * 
 	 */
@@ -104,182 +68,73 @@ public class Vehicle {
 	/**
 	 * 
 	 */
-	public String getVinCode() {
-		return vinCode;
+	public Integer getOrder() {
+		return order;
 	}
 	/**
 	 * 
 	 */
-	public void setVinCode(String vinCode) {
-		this.vinCode = vinCode;
+	public void setOrder(Integer order) {
+		this.order = order;
 	}
 	/**
 	 * 
 	 */
-	public String getvCode() {
-		return vCode;
+	public String getType() {
+		return type;
 	}
 	/**
 	 * 
 	 */
-	public void setvCode(String vCode) {
-		this.vCode = vCode;
+	public void setType(String type) {
+		this.type = type;
 	}
 	/**
 	 * 
 	 */
-	public String getArcosFilePath() {
-		return arcosFilePath;
+	public String getEngine() {
+		return engine;
 	}
 	/**
 	 * 
 	 */
-	public void setArcosFilePath(String arcosFilePath) {
-		this.arcosFilePath = arcosFilePath;
+	public void setEngine(String engine) {
+		this.engine = engine;
 	}
 	/**
 	 * 
 	 */
-	public String getEdrFilePath() {
-		return edrFilePath;
+	public String getTire() {
+		return tire;
 	}
 	/**
 	 * 
 	 */
-	public void setEdrFilePath(String edrFilePath) {
-		this.edrFilePath = edrFilePath;
+	public void setTire(String tire) {
+		this.tire = tire;
 	}
 	/**
 	 * 
 	 */
-	public String getPicName() {
-		return picName;
+	public String getVin() {
+		return vin;
 	}
 	/**
 	 * 
 	 */
-	public void setPicName(String picName) {
-		this.picName = picName;
+	public void setVin(String vin) {
+		this.vin = vin;
 	}
 	/**
 	 * 
 	 */
-	public Boolean getAvailable() {
-		return available;
+	public String getiLevel() {
+		return iLevel;
 	}
 	/**
 	 * 
 	 */
-	public void setAvailable(Boolean available) {
-		this.available = available;
+	public void setiLevel(String iLevel) {
+		this.iLevel = iLevel;
 	}
-	/**
-	 * 
-	 */
-	public String getEdrMlogSn() {
-		return edrMlogSn;
-	}
-	/**
-	 * 
-	 */
-	public void setEdrMlogSn(String edrMlogSn) {
-		this.edrMlogSn = edrMlogSn;
-	}
-	/**
-	 * 
-	 */
-	public String getEdrWifiModuleSn() {
-		return edrWifiModuleSn;
-	}
-	/**
-	 * 
-	 */
-	public void setEdrWifiModuleSn(String edrWifiModuleSn) {
-		this.edrWifiModuleSn = edrWifiModuleSn;
-	}
-	/**
-	 * 
-	 */
-	public String getArcosSn() {
-		return arcosSn;
-	}
-	/**
-	 * 
-	 */
-	public void setArcosSn(String arcosSn) {
-		this.arcosSn = arcosSn;
-	}
-	/**
-	 * 
-	 */
-	public String getCarOwner() {
-		return carOwner;
-	}
-	/**
-	 * 
-	 */
-	public void setCarOwner(String carOwner) {
-		this.carOwner = carOwner;
-	}
-	/**
-	 * 
-	 */
-	public String getEdrType() {
-		return edrType;
-	}
-	/**
-	 * 
-	 */
-	public void setEdrType(String edrType) {
-		this.edrType = edrType;
-	}
-	/**
-	 * 
-	 */
-	public String getArcosTransmissionPath() {
-		return arcosTransmissionPath;
-	}
-	/**
-	 * 
-	 */
-	public void setArcosTransmissionPath(String arcosTransmissionPath) {
-		this.arcosTransmissionPath = arcosTransmissionPath;
-	}
-	/**
-	 * 
-	 */
-	public String getEdrTransmissionPath() {
-		return edrTransmissionPath;
-	}
-	/**
-	 * 
-	 */
-	public void setEdrTransmissionPath(String edrTransmissionPath) {
-		this.edrTransmissionPath = edrTransmissionPath;
-	}
-	/**
-	 * 
-	 */
-	public String getArcosBackupPath() {
-		return arcosBackupPath;
-	}
-	/**
-	 * 
-	 */
-	public void setArcosBackupPath(String arcosBackupPath) {
-		this.arcosBackupPath = arcosBackupPath;
-	}
-	/**
-	 * 
-	 */
-	public String getEdrBackupPath() {
-		return edrBackupPath;
-	}
-	/**
-	 * 
-	 */
-	public void setEdrBackupPath(String edrBackupPath) {
-		this.edrBackupPath = edrBackupPath;
-	}
-	
 }
