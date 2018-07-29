@@ -66,11 +66,11 @@ public class BasicSecurityConfiguration extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
     	http.csrf().disable();
     	
-        http.antMatcher("/api/**")                               
-        	.authorizeRequests().anyRequest().authenticated()
-        	//.anyRequest().hasRole("ADMIN")
-        	.and()
-        	.httpBasic();
+//        http.antMatcher("/api/**")                               
+//        	.authorizeRequests().anyRequest().authenticated()
+//        	//.anyRequest().hasRole("ADMIN")
+//        	.and()
+//        	.httpBasic();
     }
  
     @Override

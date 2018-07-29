@@ -32,6 +32,14 @@ import com.flynet.bas.model.User;
  */
 public interface UserService {
 	/**
+	 * 管理员用户类型
+	 */
+	int ADMIN_USER_TYPE = 1;
+	/**
+	 * 普通用户类型
+	 */
+	int NORMAL_USER_TYPE = 2;
+	/**
 	 * 获取用户列表
 	 * @param parameters
 	 * @return

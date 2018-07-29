@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flynet.bas.dao.ProjectDao">
+	<resultMap id="Project" type="com.flynet.bas.model.Project">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="picture_document_id" property="pictureDocumentId" />
+	</resultMap>
+
+	<!-- 查询项目 -->
+	<select id="get" parameterType="string" resultMap="Project">
+		select
+			id,
+			name,
+			picture_document_id
+		from project
+		where id = #{id}
+	</select>
+	<!-- 查询项目列表 -->
+	<select id="getList" parameterType="map" resultMap="Project">
+		select
+			id,
+			name,
+			picture_document_id
+		from project
+		where 1 = 1
+		<if test="nameLike != null">
+			and name like #{nameLike}
+		</if>
+		order by name
+	</select>
+	<!-- 添加项目 -->
+	<insert id="add" parameterType="Project">
+		insert into project (
+		<trim suffixOverrides=",">
+			id,
+			name,
+			picture_document_id,
+		</trim>
+		)values (
+		<trim suffixOverrides=",">
+			#{id},
+			#{name},
+			#{pictureDocumentId},
+		</trim>
+		)
+	</insert>
+	<!-- 更新项目 -->
+	<update id="update" parameterType="Project">
+		update project
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="pictureDocumentId != null">
+				picture_document_id = #{pictureDocumentId},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 删除项目 -->
+	<delete id="delete" parameterType="string">
+		delete from project
+		where id = #{id}
+	</delete>
+</mapper>

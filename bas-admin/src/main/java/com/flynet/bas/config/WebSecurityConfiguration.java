@@ -64,10 +64,21 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter{
  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	http.headers().frameOptions().disable();
+    	
     	http.csrf().disable();
     	
         http.authorizeRequests()
+            .antMatchers("/BMWTest_web/**").permitAll()
+            .antMatchers("/mobile-api/**").permitAll()
+            .antMatchers("/api/projects/**").permitAll()    
+            .antMatchers("/api/users/**").permitAll() 
+            .antMatchers("/api/vehicles/**").permitAll()             
             .antMatchers("/assets/**").permitAll()
+            .antMatchers("/css/**").permitAll()
+            .antMatchers("/images/**").permitAll()
+            .antMatchers("/img/**").permitAll()
+            .antMatchers("/documents/**").permitAll()
             .antMatchers("/**").hasAnyAuthority("ADMIN")            
             .anyRequest().authenticated()
             .and().formLogin()

@@ -27,7 +27,7 @@ import com.flynet.bas.model.ProjectUser;
 import com.flynet.bas.model.ProjectVehicle;
 
 /**
- *
+ * 项目服务
  * @author zhanghuafeng
  */
 public interface ProjectService {

@@ -5,87 +5,69 @@
 		<result column="id" property="id" /><!-- ID -->
 		<result column="login_name" property="loginName" /><!-- 登录名 -->
 		<result column="password" property="password" /><!-- 密码 -->
-		<result column="type" property="type" /><!-- 类型 -->		
-		<result column="display_name" property="displayName" /><!-- 显示名 -->
-	    <result column="email" property="email" /><!-- 电子邮箱 -->
-	    <result column="phone_number" property="phoneNumber" /><!-- 电话号码 -->
+		<result column="type" property="type" /><!-- 类型 -->
 	</resultMap>
 
 	<!-- 获取用户列表 -->
-	<select id="getUserList" resultMap="User" parameterType="map">
-		select id, login_name, type, display_name, email, phone_number
+	<select id="getList" resultMap="User" parameterType="map">
+		select
+			id, 
+			login_name, 
+			password,
+			type
 		from users
 		where 1 = 1
-		<if test="id != null">
-			and id = #{id}
-		</if>
-		<if test="password != null">
-			and password = #{password}
-		</if>
 		<if test="loginName != null">
 			and login_name = #{loginName}
 		</if>
 		<if test="type != null">
-			and type &amp; #{type} &lt;&gt; 0
-		</if>		
-		<if test="displayName != null">
-			and display_name = #{displayName}
-		</if>
-		<if test="email != null">
-			and email = #{email}
-		</if>
-		<if test="phoneNumber != null">
-			and phone_number = #{phoneNumber}
+			and type = #{type} 
 		</if>
 	</select>
-	
-    <!-- 获取用户 -->
-	<select id="getUser" resultMap="User" parameterType="string">
-		select id, login_name, type, display_name, email, phone_number
+
+	<!-- 获取用户 -->
+	<select id="get" resultMap="User" parameterType="string">
+		select 
+			id,
+			login_name, 
+			password,
+			type
 		from users
 		where id = #{id}
 	</select>
-	
+
 	<!-- 获取用户 -->
-	<select id="getUserByLoginName" resultMap="User" parameterType="string">
-		select id, login_name, password, type, display_name, email, phone_number
+	<select id="getByLoginName" resultMap="User" parameterType="string">
+		select 
+			id, 
+			login_name, 
+			password, 
+			type
 		from users
 		where lower(login_name) = lower(#{loginName})
 	</select>
-	
+
 	<!-- 添加用户 -->
-	<insert id="addUser" parameterType="User" >
+	<insert id="add" parameterType="User">
 		insert into users(
 		<trim suffixOverrides=",">
-		    id, login_name, password, type,
-		    <if test="displayName != null">
-				display_name,
-			</if>
-			<if test="email != null">
-				email,
-			</if>
-			<if test="phoneNumber != null">
-				phone_number,
-			</if>
+			id, 
+			login_name, 
+			password, 
+			type,
 		</trim>
 		) values (
 		<trim suffixOverrides=",">
-			#{id}, #{loginName}, #{password}, #{type}, 
-			<if test="displayName != null">
-				#{displayName},
-			</if>
-			<if test="email != null">
-				#{email},
-			</if>
-			<if test="phoneNumber != null">
-				#{phoneNumber},
-			</if>			
+			#{id}, 
+			#{loginName}, 
+			#{password}, 
+			#{type},
 		</trim>
 		)
 	</insert>
-	
+
 	<!-- 更新用户数据 -->
-	<update id="updateUser" parameterType="User">
+	<update id="update" parameterType="User">
 		update users
 		<set>
 			<trim suffixOverrides=",">
@@ -95,20 +77,14 @@
 				<if test="type != null">
 					type = #{type},
 				</if>
-				<if test="displayName != null">
-					display_name = #{displayName},
+				<if test="password != null">
+					password = #{password},
 				</if>
-				<if test="email != null">
-					email = #{email},
-				</if>			
-				<if test="phoneNumber != null">
-					phone_number = #{phoneNumber},
-				</if>				
 			</trim>
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<update id="modifyPassword" parameterType="User">
 		update users
 		<set>
@@ -120,9 +96,10 @@
 		</set>
 		where id = #{id}
 	</update>
-	
+
 	<delete id="deleteUser" parameterType="string">
-		delete from users where id = #{id}
+		delete from users 
+		where id = #{id}
 	</delete>
-	
+
 </mapper>

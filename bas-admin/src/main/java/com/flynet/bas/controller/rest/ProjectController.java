@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.flynet.bas.model.Project;
 import com.flynet.bas.model.ProjectUser;
@@ -43,9 +44,11 @@ import com.flynet.bas.service.UserService;
 import com.flynet.bas.service.VehicleService;
 
 /**
- *
+ * 项目控制器
  * @author zhanghuafeng
  */
+@RestController
+@RequestMapping(value = "/api")
 public class ProjectController {
 	@Autowired
 	private ProjectService projectService;

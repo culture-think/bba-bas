@@ -1,4 +1,4 @@
-/* <p>文件名称: VehicleDao.java </p>
+/* <p>文件名称: ProjectDao.java </p>
  * <p>文件描述: 无</p>
  * <p>版权所有: 版权所有(C)2016-2026</p>
  * <p>公    司: 沈阳网飞科技有限公司</p>
@@ -24,43 +24,43 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.flynet.bas.model.Vehicle;
+import com.flynet.bas.model.Project;
 
 /**
- * 车辆信息映射器
+ * 项目信息映射器
  * @author zhanghuafeng
  */
 @Mapper
-public interface VehicleDao {
+public interface ProjectDao {
 	/**
-	 * 获取车辆信息列表
+	 * 获取项目信息列表
 	 * @param paras
 	 * @return
 	 */
-	List<Vehicle> getList(Map<String, Object> paras);
+	List<Project> getList(Map<String, Object> paras);
 	
 	/**
-	 * 获取车辆信息
+	 * 获取项目信息
 	 * @param id
 	 * @return
 	 */
-	Vehicle get(String id);
+	Project get(String id);
 	
 	/**
-	 * 添加车辆信息
+	 * 添加项目信息
 	 * @param entity
 	 */
-	int add(Vehicle entity);
+	int add(Project entity);
 	
 	/**
-	 * 修改车辆信息
+	 * 修改项目信息
 	 * @param entity
 	 */
-	int update(Vehicle entity);
+	int update(Project entity);
 	
 	
 	/**
-	 * 删除车辆信息
+	 * 删除项目信息
 	 * @param id
 	 */
 	void delete(String id);

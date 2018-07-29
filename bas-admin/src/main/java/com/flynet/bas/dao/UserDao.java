@@ -37,40 +37,40 @@ public interface UserDao {
 	 * @param paras
 	 * @return
 	 */
-	List<User> getUserList(Map<String, Object> parameters);
+	List<User> getList(Map<String, Object> parameters);
 	
 	/**
 	 * 获取用户
 	 * @param id
 	 * @return
 	 */
-	User getUser(String id);
+	User get(String id);
 	
 	/**
 	 * 获取用户
 	 * @param loginName
 	 * @return
 	 */
-	User getUserByLoginName(String loginName);
+	User getByLoginName(String loginName);
 	
 	
 	/**
 	 * 新增用户
 	 * @param user
 	 */
-	void addUser(User user);
+	void add(User user);
 	
 	/**
 	 * 删除用户
 	 * @param id
 	 */
-	void deleteUser(String id);
+	void delete(String id);
 	
 	/**
 	 * 修改用户
 	 * @param user
 	 */
-	void updateUser(User user);
+	void update(User user);
 	
 	/**
 	 * 修改密码

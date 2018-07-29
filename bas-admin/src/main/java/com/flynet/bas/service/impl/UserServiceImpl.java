@@ -45,21 +45,21 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<User> getList(Map<String, Object> parameters) {
-		List<User> userList = userDao.getUserList(parameters);
+		List<User> userList = userDao.getList(parameters);
 
 		return userList;
 	}
 
 	@Override
 	public User getById(String id) {
-		User user = userDao.getUser(id);
+		User user = userDao.get(id);
 
 		return user;
 	}
 
 	@Override
 	public User getByLoginName(String loginName) {
-		User user = userDao.getUserByLoginName(loginName);
+		User user = userDao.getByLoginName(loginName);
 
 		return user;
 	}
@@ -74,22 +74,22 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		if(user.getType() == null){
-			user.setType(2);//普通管理员，没有系统管理权限
+			user.setType(UserService.NORMAL_USER_TYPE);//普通管理员，没有系统管理权限
 		}
 
-		userDao.addUser(user);
+		userDao.add(user);
 
 		return user;
 	}
 
 	@Override
 	public void delete(String id) {
-		userDao.deleteUser(id);
+		userDao.delete(id);
 	}
 
 	@Override
 	public User update(User user) throws FlyNetException {
-		userDao.updateUser(user);
+		userDao.update(user);
 
 		return user;
 	}
@@ -97,7 +97,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void modifyPassword(User user) throws FlyNetException {
 		userDao.modifyPassword(user);
-
 	}
 
 }
