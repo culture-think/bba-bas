@@ -147,9 +147,7 @@ public class ProjectController {
 	 */
 	@RequestMapping(value = "/projects/{projectId}/users", method = RequestMethod.POST)
 	public void updateProjectUsers(@PathVariable String projectId, @RequestBody List<ProjectUser> users) {
-		users.stream().forEach(user -> user.setProjectId(projectId));
-		
-		this.projectService.updateUsers(users);
+		this.projectService.updateUsers(projectId, users);
 	}
 	
 	/**
@@ -173,8 +171,6 @@ public class ProjectController {
 	 */
 	@RequestMapping(value = "/projects/{projectId}/vehicles", method = RequestMethod.POST)
 	public void updateProjectVehicles(@PathVariable String projectId, @RequestBody List<ProjectVehicle> vehicles) {
-		vehicles.stream().forEach(vehicle -> vehicle.setProjectId(projectId));
-		
-		this.projectService.updateVehicles(vehicles);
+		this.projectService.updateVehicles(projectId, vehicles);
 	}
 }

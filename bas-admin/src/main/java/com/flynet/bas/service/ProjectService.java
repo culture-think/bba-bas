@@ -63,13 +63,15 @@ public interface ProjectService {
 	
 	/**
 	 * 修改项目用户列表
+	 * @param projectId
 	 * @param projectUsers
 	 */
-	void updateUsers(List<ProjectUser> projectUsers);
+	void updateUsers(String projectId, List<ProjectUser> projectUsers);
 	
 	/**
 	 * 修改项目车辆列表
+	 * @param projectId
 	 * @param projectVehicles
 	 */
-	void updateVehicles(List<ProjectVehicle> projectVehicles);
+	void updateVehicles(String projectId, List<ProjectVehicle> projectVehicles);
 }

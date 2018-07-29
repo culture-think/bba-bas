@@ -19,6 +19,7 @@
  */
 package com.flynet.bas.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -28,6 +29,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.flynet.bas.dao.ProjectDao;
+import com.flynet.bas.dao.ProjectUserDao;
 import com.flynet.bas.model.Project;
 import com.flynet.bas.model.ProjectUser;
 import com.flynet.bas.model.ProjectVehicle;
@@ -42,6 +44,8 @@ import com.flynet.bas.service.ProjectService;
 public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectDao projectDao;
+	@Autowired
+	private ProjectUserDao projectUserDao;
 	
 	@Override
 	public List<Project> getList(Map<String, Object> parameters) {
@@ -79,14 +83,26 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public void updateUsers(List<ProjectUser> projectUsers) {
-		// TODO Auto-generated method stub
-
+	public void updateUsers(String projectId, List<ProjectUser> projectUsers) {
+		if(projectUsers.isEmpty()){
+			return;
+		}
+		
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("projectId", projectId);
+		projectUserDao.delete(parameters);
+		
+		projectUsers.stream().forEach(user -> {
+			user.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+			user.setProjectId(projectId);
+		});
+		
+		projectUserDao.addList(projectUsers);
 	}
 
 	@Override
-	public void updateVehicles(List<ProjectVehicle> projectVehicles) {
-		// TODO Auto-generated method stub
+	public void updateVehicles(String projectId, List<ProjectVehicle> projectVehicles) {
+		
 
 	}
 
