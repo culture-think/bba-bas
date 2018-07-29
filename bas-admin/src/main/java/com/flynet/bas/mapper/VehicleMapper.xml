@@ -9,7 +9,7 @@
 		<result column="tire" property="tire" />
 		<result column="vin" property="vin" />
 		<result column="i_level" property="iLevel" />
-		<result column="pictrue_id" property="pictureId" />
+		<result column="picture_id" property="pictureId" />
 	</resultMap>
 
 	<!-- 查询车辆 -->
@@ -22,7 +22,7 @@
 		tire,
 		vin,
 		i_level,
-		pictrue_id
+		picture_id
 		from vehicle
 		where id = #{id}
 	</select>
@@ -36,7 +36,7 @@
 		tire,
 		vin,
 		i_level,
-		pictrue_id
+		picture_id
 		from vehicle
 		where 1 = 1
 		<if test="type != null">
@@ -67,7 +67,7 @@
 			tire,
 			vin,
 			i_level,
-			pictrue_id,
+			picture_id,
 		</trim>
 		)values (
 		<trim suffixOverrides=",">
@@ -105,7 +105,7 @@
 				i_level = #{iLevel},
 			</if>
 			<if test="pictrueId != null">
-				pictrue_id = #{pictrueId},
+				picture_id = #{pictrueId},
 			</if>
 		</set>
 		where id = #{id}

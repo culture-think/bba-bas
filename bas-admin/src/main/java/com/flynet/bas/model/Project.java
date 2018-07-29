@@ -17,7 +17,7 @@ public class Project {
     /**
      * 项目图片ID
      */
-    private String pictureDocumentId;
+    private String pictureId;
     /**
      * 项目图片
      */
@@ -48,15 +48,15 @@ public class Project {
 	/**
 	 * 
 	 */
-	public String getPictureDocumentId() {
-		return pictureDocumentId;
+	public String getPictureId() {
+		return pictureId;
 	}
 
 	/**
 	 * 
 	 */
-	public void setPictureDocumentId(String pictureDocumentId) {
-		this.pictureDocumentId = pictureDocumentId;
+	public void setPictureId(String pictureId) {
+		this.pictureId = pictureId;
 	}
 
 	/**
