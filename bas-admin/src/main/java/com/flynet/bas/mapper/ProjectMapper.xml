@@ -4,7 +4,7 @@
 	<resultMap id="Project" type="com.flynet.bas.model.Project">
 		<id column="id" property="id" />
 		<result column="name" property="name" />
-		<result column="picture_document_id" property="pictureDocumentId" />
+		<result column="picture_id" property="pictureId" />
 	</resultMap>
 
 	<!-- 查询项目 -->
@@ -12,7 +12,7 @@
 		select
 			id,
 			name,
-			picture_document_id
+			picture_id
 		from project
 		where id = #{id}
 	</select>
@@ -21,7 +21,7 @@
 		select
 			id,
 			name,
-			picture_document_id
+			picture_id
 		from project
 		where 1 = 1
 		<if test="nameLike != null">
@@ -35,13 +35,13 @@
 		<trim suffixOverrides=",">
 			id,
 			name,
-			picture_document_id,
+			picture_id,
 		</trim>
 		)values (
 		<trim suffixOverrides=",">
 			#{id},
 			#{name},
-			#{pictureDocumentId},
+			#{pictureId},
 		</trim>
 		)
 	</insert>
@@ -52,8 +52,8 @@
 			<if test="name != null">
 				name = #{name},
 			</if>
-			<if test="pictureDocumentId != null">
-				picture_document_id = #{pictureDocumentId},
+			<if test="pictureId != null">
+				picture_id = #{pictureId},
 			</if>
 		</set>
 		where id = #{id}
