@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zll.dms.dao.ModuleDao">
-  <resultMap id="Module" type="com.zll.dms.model.Module">
+<mapper namespace="com.flynet.bas.dao.ModuleDao">
+  <resultMap id="Module" type="com.flynet.bas.model.Module">
     <id column="id" property="id" />
     <result column="name" property="name" />
     <result column="parent_id" property="parentId" />
@@ -10,9 +10,9 @@
     <result column="url" property="url" />  
     <result column="number" property="index" />      
     <!-- 
-    <association property="parent"  column="parent_id" select="com.zll.dms.dao.ModuleDao.get" />
+    <association property="parent"  column="parent_id" select="com.flynet.bas.dao.ModuleDao.get" />
      -->
-    <collection property="children" column="{parentId=id}" select="com.zll.dms.dao.ModuleDao.getList"/>
+    <collection property="children" column="{parentId=id}" select="com.flynet.bas.dao.ModuleDao.getList"/>
   </resultMap>
   <!-- 查询模块 -->
   <select id="get" parameterType="string" resultMap="Module">

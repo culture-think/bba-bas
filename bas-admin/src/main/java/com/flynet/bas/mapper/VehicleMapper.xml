@@ -1,186 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.zll.dms.dao.VehicleDao">
-  <resultMap id="Vehicle" type="com.zll.dms.model.Vehicle">
-    <id column="id" property="id" />
-    <result column="vin_code" property="vinCode" />
-    <result column="v_code" property="vCode" />
-    
-    <result column="edr_mlog_sn" property="edrMlogSn" />
-    <result column="edr_wifi_module_sn" property="edrWifiModuleSn" />
-    <result column="arcos_sn" property="arcosSn" />
-    <result column="car_owner" property="carOwner" />
-    <result column="edr_type" property="edrType" />         
-    
-    <result column="arcos_transmission_path" property="arcosTransmissionPath" />
-    <result column="edr_transmission_path" property="edrTransmissionPath" />  
-  
-    <result column="arcos_backup_path" property="arcosBackupPath" />
-    <result column="edr_backup_path" property="edrBackupPath" />    
-    
+<mapper namespace="com.flynet.bas.dao.VehicleDao">
+	<resultMap id="Vehicle" type="com.flynet.bas.model.Vehicle">
+		<id column="id" property="id" />
+		<result column="order_number" property="order" />
+		<result column="type" property="type" />
+		<result column="engine" property="engine" />
+		<result column="tire" property="tire" />
+		<result column="vin" property="vin" />
+		<result column="i_level" property="iLevel" />
+		<result column="pictrue_id" property="pictureId" />
+	</resultMap>
 
-    <result column="arcos_file_path" property="arcosFilePath" />
-    <result column="edr_file_path" property="edrFilePath" />  
-         
-    <result column="pic_name" property="picName" />  
-    <result column="available" property="available" />      
-
-    <association property="arcosTotal"  column="id" select="com.zll.dms.dao.ArcosTotalDao.get" />
-    <association property="edrTotal"  column="id" select="com.zll.dms.dao.EdrTotalDao.get" />
-    
-  </resultMap>
-  
-  <!-- 查询车辆 -->
-  <select id="get" parameterType="string" resultMap="Vehicle">
-    select
-    	id, 
-    	vin_code, 
-    	v_code, 
-    	edr_mlog_sn, 
-    	edr_wifi_module_sn, 
-    	arcos_sn, 
-    	car_owner, 
-    	edr_type,
-    	arcos_file_path,
-    	edr_file_path,
-    	arcos_transmission_path,
-    	edr_transmission_path,
-    	arcos_backup_path,
-    	edr_backup_path,
-    	pic_name,
-    	available
-    from vehicle
-    where id = #{id}
-  </select>
-  <!-- 查询车辆列表 -->
-  <select id="getList" parameterType="map" resultMap="Vehicle">
-    select
-    	id, 
-    	vin_code, 
-    	v_code, 
-    	edr_mlog_sn, 
-    	edr_wifi_module_sn, 
-    	arcos_sn, 
-    	car_owner, 
-    	edr_type,    	
-    	arcos_file_path,
-    	edr_file_path,
-    	arcos_transmission_path,
-    	edr_transmission_path,
-    	arcos_backup_path,
-    	edr_backup_path,
-    	pic_name,
-    	available
-    from vehicle
-    where 1 = 1
-		<if test="vinCode != null">
-			and vin_code = #{vinCode}
-		</if>		
-		<if test="vCode != null">
-			and v_code = #{vCode}
+	<!-- 查询车辆 -->
+	<select id="get" parameterType="string" resultMap="Vehicle">
+		select
+		id,
+		order_number,
+		type,
+		engine,
+		tire,
+		vin,
+		i_level,
+		pictrue_id
+		from vehicle
+		where id = #{id}
+	</select>
+	<!-- 查询车辆列表 -->
+	<select id="getList" parameterType="map" resultMap="Vehicle">
+		select
+		id,
+		order_number,
+		type,
+		engine,
+		tire,
+		vin,
+		i_level,
+		pictrue_id
+		from vehicle
+		where 1 = 1
+		<if test="type != null">
+			and type = #{type}
 		</if>
-		<if test="available != null">
-			and available = #{available}
-		</if>	
-	order by vin_code	
-  </select>
-  <!-- 添加车辆 -->
-  <insert id="add" parameterType="Vehicle">
-    insert into vehicle (
-   	<trim suffixOverrides=",">
-    	id, 
-    	vin_code, 
-    	v_code, 
-    	edr_mlog_sn, 
-    	edr_wifi_module_sn, 
-    	arcos_sn, 
-    	car_owner, 
-    	edr_type,    	
-    	arcos_file_path,
-    	edr_file_path,
-    	arcos_transmission_path,
-    	edr_transmission_path,
-    	arcos_backup_path,
-    	edr_backup_path,
-    	pic_name,
-    	available,
-   	</trim>
-   	)values (
-	<trim suffixOverrides=",">
-      	#{id}, 
-      	#{vinCode},  
-      	#{vCode},	
-      	#{edrMlogSn},
-      	#{edrWifiModuleSn},
-      	#{arcosSn},
-      	#{carOwner},
-      	#{edrType},            	      	
-      	#{arcosFilePath},
-      	#{edrFilePath},
-      	#{arcosTransmissionPath},
-      	#{edrTransmissionPath},
-      	#{arcosBackupPath},
-      	#{edrBackupPath},      	
-      	#{picName},  
-      	#{available},       	    	
-     </trim>
-     )
-  </insert>
-  <!-- 更新车辆 -->
-  <update id="update" parameterType="Vehicle">
-    update vehicle
-    <set>
-      <if test="vinCode != null">
-        vin_code = #{vinCode},
-      </if>
-      <if test="vCode != null">
-        v_code = #{vCode},
-      </if>
-      <if test="edrMlogSn != null">
-        edr_mlog_sn = #{edrMlogSn},
-      </if>
-      <if test="edrWifiModuleSn != null">
-        edr_wifi_module_sn = #{edrWifiModuleSn},
-      </if>
-      <if test="arcosSn != null">
-        arcos_sn = #{arcosSn},
-      </if>
-      <if test="carOwner != null">
-        car_owner = #{carOwner},
-      </if>
-      <if test="edrType != null">
-        edr_type = #{edrType},
-      </if>                              
-      <if test="arcosFilePath != null">
-        arcos_file_path = #{arcosFilePath},
-      </if>  
-      <if test="edrFilePath != null">
-        edr_file_path = #{edrFilePath},
-      </if>  
-      <if test="arcosTransmissionPath != null">
-        arcos_transmission_path = #{arcosTransmissionPath},
-      </if>  
-      <if test="edrTransmissionPath != null">
-        edr_transmission_path = #{edrTransmissionPath},
-      </if>  
-      <if test="arcosBackupPath != null">
-        arcos_backup_path = #{arcosBackupPath},
-      </if>  
-      <if test="edrBackupPath != null">
-        edr_backup_path = #{edrBackupPath},
-      </if>           
-      <if test="picName != null">
-        pic_name = #{picName},
-      </if> 
-      <if test="available != null">
-        available = #{available},
-      </if>                         
-    </set>
-    where id = #{id}
-  </update>
-  <!-- 删除车辆 -->
-  <delete id="delete" parameterType="string">
-    delete from vehicle
-    where id = #{id}
-  </delete>
+		<if test="engine != null">
+			and engine = #{engine}
+		</if>
+		<if test="tire != null">
+			and tire = #{tire}
+		</if>
+		<if test="vin != null">
+			and vin = #{vin}
+		</if>
+		<if test="iLevel != null">
+			and i_level = #{iLevel}
+		</if>
+		order by order_number
+	</select>
+	<!-- 添加车辆 -->
+	<insert id="add" parameterType="Vehicle">
+		insert into vehicle (
+		<trim suffixOverrides=",">
+			id,
+			order_number,
+			type,
+			engine,
+			tire,
+			vin,
+			i_level,
+			pictrue_id,
+		</trim>
+		)values (
+		<trim suffixOverrides=",">
+			#{id},
+			#{order},
+			#{type},
+			#{engine},
+			#{tire},
+			#{vin},
+			#{iLevel},
+			#{pictrueId},
+		</trim>
+		)
+	</insert>
+	<!-- 更新车辆 -->
+	<update id="update" parameterType="Vehicle">
+		update vehicle
+		<set>
+			<if test="order != null">
+				order_number = #{order},
+			</if>
+			<if test="type != null">
+				type = #{type},
+			</if>
+			<if test="engine != null">
+				engine = #{engine},
+			</if>
+			<if test="tire != null">
+				tire = #{tire},
+			</if>
+			<if test="vin != null">
+				vin = #{vin},
+			</if>
+			<if test="iLevel != null">
+				i_level = #{iLevel},
+			</if>
+			<if test="pictrueId != null">
+				pictrue_id = #{pictrueId},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 删除车辆 -->
+	<delete id="delete" parameterType="string">
+		delete from vehicle
+		where id = #{id}
+	</delete>
 </mapper>
