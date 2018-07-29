@@ -32,7 +32,7 @@ public class User {
     /**
      * 用户登录名
      */
-    private String name;
+    private String loginName;
     /**
      * 密码
      */
@@ -56,14 +56,14 @@ public class User {
 	/**
 	 * 
 	 */
-	public String getName() {
-		return name;
+	public String getLoginName() {
+		return loginName;
 	}
 	/**
 	 * 
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
 	}
 	/**
 	 * 
