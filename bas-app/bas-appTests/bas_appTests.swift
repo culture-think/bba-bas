@@ -33,4 +33,9 @@ class bas_appTests: XCTestCase {
         }
     }
     
+    func testUserInitializationSucceeds(){
+        let user = User.init(id: "123", account: "123@flynet.com", name: "Basil Chuang", password: "123456", photo: nil)
+        XCTAssertNotNil(user)
+    }
+    
 }
