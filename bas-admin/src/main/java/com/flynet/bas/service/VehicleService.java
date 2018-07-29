@@ -19,7 +19,6 @@
  */
 package com.flynet.bas.service;
 
-import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -63,11 +62,4 @@ public interface VehicleService {
 	 */
 	void delete(String id);
 	
-	/**
-	 * 导入车辆信息
-	 * @param inputStream
-	 * @param fileName
-	 * @throws Exception
-	 */
-	void upload(InputStream inputStream, String fileName) throws Exception;
 }
