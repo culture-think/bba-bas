@@ -53,6 +53,10 @@ public class Vehicle {
 	 * I-Level
 	 */    
     private String iLevel;
+    /**
+     * 图片ID
+     */
+    private String pictureId;
 	/**
 	 * 
 	 */
@@ -137,4 +141,17 @@ public class Vehicle {
 	public void setiLevel(String iLevel) {
 		this.iLevel = iLevel;
 	}
+	/**
+	 * 
+	 */
+	public String getPictureId() {
+		return pictureId;
+	}
+	/**
+	 * 
+	 */
+	public void setPictureId(String pictureId) {
+		this.pictureId = pictureId;
+	}
+	
 }
