@@ -19,8 +19,6 @@
  */
 package com.flynet.bas.service.impl;
 
-import java.io.InputStream;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -32,7 +30,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.flynet.bas.dao.VehicleDao;
 import com.flynet.bas.model.Vehicle;
 import com.flynet.bas.service.VehicleService;
-import com.flynet.bas.util.ImportExcelUtil;
 
 /**
  * 车辆信息服务
@@ -79,60 +76,4 @@ public class VehicleServiceImpl implements VehicleService {
 	public void delete(String id) {
 		vehicleDao.delete(id);
 	}
-
-	@Override
-	public void upload(InputStream inputStream, String fileName) throws Exception {
-		//1、读取excel数据
-		List<List<Object>> newList  = new ImportExcelUtil().getBankListByExcel(inputStream, fileName);
-		
-		if(newList.isEmpty()){
-			return;
-		}
-		
-		//2、数据转换：添加车辆
-		Map<String, Vehicle> vehicleMap = new HashMap<String, Vehicle>();
-		List<Vehicle> vehicleList = vehicleDao.getList(new HashMap<String, Object>());
-		for(Vehicle vehicle : vehicleList){
-			vehicleMap.put(vehicle.getVinCode(), vehicle);
-		}
-		
-		Vehicle vehicle = null;
-		String vinCode = null;
-		for(List<Object> list : newList){
-			if(list.size() < 2){
-				continue;
-			}		
-			vinCode = list.get(1).toString();
-			if(vehicleMap.containsKey(vinCode)){
-				continue;
-			}	
-			
-			if(vinCode == null || vinCode.trim().isEmpty()){
-				continue;
-			}
-			vehicle = new Vehicle();
-			vehicle.setVinCode(vinCode);
-			
-			vehicle.setvCode(list.get(2).toString());
-			vehicle.setEdrMlogSn(list.get(3).toString());
-			vehicle.setEdrWifiModuleSn(list.get(4).toString());
-			vehicle.setArcosSn(list.get(5).toString());
-			vehicle.setCarOwner(list.get(6).toString());
-			vehicle.setEdrType(list.get(7).toString());
-			vehicle.setEdrFilePath(list.get(8).toString());
-			vehicle.setArcosFilePath(list.get(9).toString());
-
-			vehicle.setEdrTransmissionPath(list.get(10).toString());
-			vehicle.setArcosTransmissionPath(list.get(11).toString());
-			vehicle.setEdrBackupPath(list.get(12).toString());
-			vehicle.setArcosBackupPath(list.get(13).toString());
-			
-			vehicle.setPicName(list.get(14).toString());
-			
-			vehicle.setAvailable(list.get(15).toString().trim().equals("y"));
-			
-			this.add(vehicle);
-		}
-	}
-
 }

@@ -69,13 +69,6 @@ public class UserServiceImpl implements UserService {
 		String id = UUID.randomUUID().toString().replaceAll("-", "");
 		user.setId(id);
 		
-//		IUserDetailsWrapper currentUser = new UserUtil().getCurrentUser();
-//		user.setProjectId(currentUser.getProjectId());
-		
-		if(user.getDisplayName() == null){
-			user.setDisplayName(user.getLoginName());
-		}
-		
 		if(user.getPassword() == null){
 			user.setPassword(user.getLoginName());
 		}
