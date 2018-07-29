@@ -1,11 +1,11 @@
 /* <p>文件名称: UserDetailsWrapper.java </p>
  * <p>文件描述: 无</p>
  * <p>版权所有: 版权所有(C)2016-2026</p>
- * <p>公    司: 沈阳唬哈科技有限公司</p>
+ * <p>公    司: 沈阳网飞科技有限公司</p>
  * <p>内容摘要: 无</p>
  * <p>其他说明: 无</p>
- * <p>创建日期：2017年2月26日</p>
- * <p>完成日期：2017年2月26日</p>
+ * <p>创建日期：2018年7月29日</p>
+ * <p>完成日期：2018年7月29日</p>
  * <p>修改记录1: // 修改历史记录，包括修改日期、修改者及修改内容</p>
  * <pre>
  *    修改日期：上午7:39:50
@@ -96,20 +96,12 @@ public class UserDetailsWrapper implements UserDetails, IUserDetailsWrapper {
 		return this.user.getId();
 	}
 	
-	public String getDisplayName(){
-		return this.user.getDisplayName();
-	}
-	
 	public User getUser(){
 		User theUser = new User();
-		
-		theUser.setDisplayName(this.user.getDisplayName());
-		theUser.setEmail(this.user.getEmail());
+
 		theUser.setId(this.user.getId());
 		theUser.setLoginName(this.user.getLoginName());
-		theUser.setPhoneNumber(this.user.getPhoneNumber());
 		theUser.setType(this.user.getType());
-		theUser.setProjectId(this.user.getProjectId());
 		
 		//密码字段处理为null，不向外界暴露
 		theUser.setPassword(null);
@@ -117,29 +109,20 @@ public class UserDetailsWrapper implements UserDetails, IUserDetailsWrapper {
 		return theUser;
 	}
 
-	@Override
-	public String getEmail() {
-		return this.user.getEmail();
-	}
+
 
 	@Override
 	public String getLoginName() {
 		return this.user.getLoginName();
 	}
 
-	@Override
-	public String getPhoneNumber() {
-		return this.user.getPhoneNumber();
-	}
+
 
 	@Override
 	public Integer getType() {
 		return this.user.getType();
 	}
 
-	@Override
-	public String getProjectId() {
-		return this.user.getProjectId();
-	}
+
 
 }

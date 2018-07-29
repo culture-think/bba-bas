@@ -62,29 +62,8 @@ public class UserUtil {
 			}
 
 			@Override
-			public String getDisplayName() {
-				return (String) userMap.get("displayName");
-			}
-
-			@Override
-			public String getEmail() {
-				return (String) userMap.get("email");
-			}
-
-			@Override
-			public String getPhoneNumber() {
-				return (String) userMap.get("phoneNumber");
-			}
-
-			@Override
 			public Integer getType() {
 				return (Integer) userMap.get("type");
-			}
-
-			@Override
-			public String getProjectId() {
-				// TODO Auto-generated method stub
-				return (String) userMap.get("plantId");
 			}
 			
 		};

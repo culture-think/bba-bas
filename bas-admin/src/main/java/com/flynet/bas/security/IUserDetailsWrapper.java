@@ -38,32 +38,8 @@ public interface IUserDetailsWrapper {
 
 
 	/**
-	 * 用户显示名称
-	 * @return
-	 */
-	String getDisplayName();
-
-	/**
-	 * 用户电子邮箱
-	 * @return
-	 */
-	String getEmail();
-
-	/**
-	 * 用户手机号码
-	 * @return
-	 */
-	String getPhoneNumber();
-
-	/**
 	 * 用户类型
 	 * @return
 	 */
 	Integer getType();
-	
-	/**
-	 *  工厂ID
-	 * @return
-	 */
-	String getProjectId();
 }
