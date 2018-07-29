@@ -11,17 +11,20 @@
 	<!-- 获取用户列表 -->
 	<select id="getList" resultMap="User" parameterType="map">
 		select
-			id, 
-			login_name, 
-			password,
-			type
+			users.id, 
+			users.login_name, 
+			users.password,
+			users.type
 		from users
+		<if test="projectId != null">
+			join project_user pu on pu.user_id = users.id and pu.project_id = #{projectId}
+		</if>
 		where 1 = 1
 		<if test="loginName != null">
-			and login_name = #{loginName}
+			and users.login_name = #{loginName}
 		</if>
 		<if test="type != null">
-			and type = #{type} 
+			and users.type = #{type} 
 		</if>
 	</select>
 
