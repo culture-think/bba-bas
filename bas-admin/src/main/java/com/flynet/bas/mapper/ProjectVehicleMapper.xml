@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flynet.bas.dao.ProjectVehicleDao">
+	<resultMap id="ProjectVehicle" type="com.flynet.bas.model.ProjectVehicle">
+		<id column="id" property="id" />
+		<result column="project_id" property="projectId" />
+		<result column="vehicle_id" property="vehicleId" />
+		
+		<result column="begin_km" property="beginKm" />
+		<result column="finish_km" property="finishKm" />
+		<result column="temperature" property="temperature" />
+		<result column="weather" property="weather" />
+		<result column="testers" property="testers" />				
+	</resultMap>
+	
+	<!-- 获取项目车辆信息列表 -->
+	<select id="getList" resultMap="ProjectVehicle" parameterType="map">
+		select
+			id, 
+			project_id, 
+			vehicle_id,
+			begin_km,
+			finish_km,
+			temperature,
+			weather,
+			testers
+		from project_vehicle
+		where 1 = 1
+		<if test="projectId != null">
+			and project_id = #{projectId}
+		</if>
+	</select>
+		
+	<!-- 添加项目车辆列表 -->
+	<insert id="addList" parameterType="ProjectVehicle">
+	    insert into project_vehicle (
+	    <trim suffixOverrides=",">
+				id, 
+				project_id, 
+				vehicle_id,
+		</trim>
+		) values
+		<foreach collection="list" item="item" index="index" separator=",">
+			(
+			<trim suffixOverrides=",">
+				#{item.id},
+				#{item.projectId},
+				#{item.vehicleId},
+			</trim>
+			)
+		</foreach>
+	 </insert>
+
+	<!-- 更新项目车辆信息 -->
+	<update id="update" parameterType="User">
+		update project_vehicle
+		<set>	
+			<trim suffixOverrides=",">
+				<if test="beginKm != null">
+					begin_km = #{beginKm},
+				</if>
+				<if test="finishKm != null">
+					finish_km = #{finishKm},
+				</if>
+				<if test="temperature != null">
+					temperature = #{temperature},
+				</if>
+				<if test="weather != null">
+					weather = #{weather},
+				</if>
+				<if test="testers != null">
+					testers = #{testers},
+				</if>								
+			</trim>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<!-- 删除项目车辆列表 -->
+	<delete id="delete" parameterType="map">
+		delete from project_vehicle
+		where 1 = 1
+		<if test="projectId != null">
+			and project_id = #{projectId}
+		</if>
+	</delete>
+</mapper>

@@ -30,6 +30,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.flynet.bas.dao.ProjectDao;
 import com.flynet.bas.dao.ProjectUserDao;
+import com.flynet.bas.dao.ProjectVehicleDao;
 import com.flynet.bas.model.Project;
 import com.flynet.bas.model.ProjectUser;
 import com.flynet.bas.model.ProjectVehicle;
@@ -46,6 +47,8 @@ public class ProjectServiceImpl implements ProjectService {
 	private ProjectDao projectDao;
 	@Autowired
 	private ProjectUserDao projectUserDao;
+	@Autowired
+	private ProjectVehicleDao projectVehicleDao;
 	
 	@Override
 	public List<Project> getList(Map<String, Object> parameters) {
@@ -102,8 +105,20 @@ public class ProjectServiceImpl implements ProjectService {
 
 	@Override
 	public void updateVehicles(String projectId, List<ProjectVehicle> projectVehicles) {
+		if(projectVehicles.isEmpty()){
+			return;
+		}
 		
-
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		parameters.put("projectId", projectId);
+		projectVehicleDao.delete(parameters);
+		
+		projectVehicles.stream().forEach(vehicle -> {
+			vehicle.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+			vehicle.setProjectId(projectId);
+		});
+		
+		projectVehicleDao.addList(projectVehicles);
 	}
 
 }

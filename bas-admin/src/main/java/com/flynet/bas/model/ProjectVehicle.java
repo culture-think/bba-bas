@@ -36,6 +36,26 @@ public class ProjectVehicle {
 	 * 车辆ID
 	 */
 	private String vehicleId;
+	/**
+	 * 开始公里数
+	 */
+	private Integer beginKm;
+	/**
+	 * 结束公里数
+	 */
+	private Integer finishKm;
+	/**
+	 * 温度
+	 */
+	private Float temperature;
+	/**
+	 * 天气
+	 */
+	private String weather;
+	/**
+	 * 测试人员：存储ID，逗号分隔，显示姓名
+	 */
+	private String testers;
 
 	/**
 	 * 
@@ -73,4 +93,65 @@ public class ProjectVehicle {
 	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
 	}
+	/**
+	 * 
+	 */
+	public Integer getBeginKm() {
+		return beginKm;
+	}
+	/**
+	 * 
+	 */
+	public void setBeginKm(Integer beginKm) {
+		this.beginKm = beginKm;
+	}
+	/**
+	 * 
+	 */
+	public Integer getFinishKm() {
+		return finishKm;
+	}
+	/**
+	 * 
+	 */
+	public void setFinishKm(Integer finishKm) {
+		this.finishKm = finishKm;
+	}
+	/**
+	 * 
+	 */
+	public Float getTemperature() {
+		return temperature;
+	}
+	/**
+	 * 
+	 */
+	public void setTemperature(Float temperature) {
+		this.temperature = temperature;
+	}
+	/**
+	 * 
+	 */
+	public String getWeather() {
+		return weather;
+	}
+	/**
+	 * 
+	 */
+	public void setWeather(String weather) {
+		this.weather = weather;
+	}
+	/**
+	 * 
+	 */
+	public String getTesters() {
+		return testers;
+	}
+	/**
+	 * 
+	 */
+	public void setTesters(String testers) {
+		this.testers = testers;
+	}
+	
 }
