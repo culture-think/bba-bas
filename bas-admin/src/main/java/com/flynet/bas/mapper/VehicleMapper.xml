@@ -29,30 +29,33 @@
 	<!-- 查询车辆列表 -->
 	<select id="getList" parameterType="map" resultMap="Vehicle">
 		select
-		id,
-		order_number,
-		type,
-		engine,
-		tire,
-		vin,
-		i_level,
-		picture_id
+			vehicle.id,
+			vehicle.order_number,
+			vehicle.type,
+			vehicle.engine,
+			vehicle.tire,
+			vehicle.vin,
+			vehicle.i_level,
+			vehicle.picture_id
 		from vehicle
+		<if test="projectId != null">
+			join project_vehicle pv on pv.vehicle_id = vehicle.id and pv.project_id = #{projectId}
+		</if>		
 		where 1 = 1
 		<if test="type != null">
-			and type = #{type}
+			and vehicle.type = #{type}
 		</if>
 		<if test="engine != null">
-			and engine = #{engine}
+			and vehicle.engine = #{engine}
 		</if>
 		<if test="tire != null">
-			and tire = #{tire}
+			and vehicle.tire = #{tire}
 		</if>
 		<if test="vin != null">
-			and vin = #{vin}
+			and vehicle.vin = #{vin}
 		</if>
 		<if test="iLevel != null">
-			and i_level = #{iLevel}
+			and vehicle.i_level = #{iLevel}
 		</if>
 		order by order_number
 	</select>
@@ -78,7 +81,7 @@
 			#{tire},
 			#{vin},
 			#{iLevel},
-			#{pictrueId},
+			#{pictureId},
 		</trim>
 		)
 	</insert>
@@ -104,8 +107,8 @@
 			<if test="iLevel != null">
 				i_level = #{iLevel},
 			</if>
-			<if test="pictrueId != null">
-				picture_id = #{pictrueId},
+			<if test="pictureId != null">
+				picture_id = #{pictureId},
 			</if>
 		</set>
 		where id = #{id}
