@@ -51,7 +51,7 @@
     		
     		$("#" + vehicle.id + " a").attr("href", vehicle.picName);
     		$("#" + vehicle.id + " img").attr("src", vehicle.picName);
-    		$("#" + vehicle.id + " .top").text(vehicle.vinCode);
+    		$("#" + vehicle.id + " .top").text(vehicle.vinCode + "  " + vehicle.vCode);
     		
     		$("#" + vehicle.id + " .desc.left .status").text(arcosStatus);
     		$("#" + vehicle.id + " .desc.left .collected-date").text(Util.dateFormat(arcosCollectedTime, true));
@@ -111,7 +111,7 @@
     			           +'            <img src="' + vehicle.picName + '" width="300" height="200">'
     			           +'        </a>'
     			           +'        <div>'
-    			           +'            <div class="top">' + vehicle.vinCode + '</div>'
+    			           +'            <div class="top">' + vehicle.vinCode + "  " + vehicle.vCode + '</div>'
     			           +'            <div class="desc left">Arcos'
     			           +'                <p class="status ' + arcosStatusColor + '">' + arcosStatus + '</p>'
     			           +'                <p class="collected-date">' + Util.dateFormat(arcosCollectedTime, true) + '</p>'
