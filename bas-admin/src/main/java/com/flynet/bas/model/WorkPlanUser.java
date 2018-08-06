@@ -23,20 +23,23 @@ package com.flynet.bas.model;
  * 项目用户关系
  * @author zhanghuafeng
  */
-public class ProjectUser {
+public class WorkPlanUser {
 	/**
 	 * Id
 	 */
 	private String id;
 	/**
-	 * 项目ID
+	 * 工作计划ID
 	 */
-	private String projectId;
+	private String workPlanId;
 	/**
 	 * 用户ID
 	 */
 	private String userId;
-	
+	/**
+	 * 用户
+	 */
+	private User user;
 	/**
 	 * 
 	 */
@@ -52,15 +55,16 @@ public class ProjectUser {
 	/**
 	 * 
 	 */
-	public String getProjectId() {
-		return projectId;
+	public String getWorkPlanId() {
+		return workPlanId;
 	}
 	/**
 	 * 
 	 */
-	public void setProjectId(String projectId) {
-		this.projectId = projectId;
+	public void setWorkPlanId(String workPlanId) {
+		this.workPlanId = workPlanId;
 	}
+	/*
 	/**
 	 * 
 	 */
@@ -73,4 +77,17 @@ public class ProjectUser {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+	/**
+	 * 
+	 */
+	public User getUser() {
+		return user;
+	}
+	/**
+	 * 
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 }

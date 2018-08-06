@@ -1,14 +1,14 @@
-/* <p>文件名称: ProjectVehicle.java </p>
+/* <p>文件名称: VehicleSelection.java </p>
  * <p>文件描述: 无</p>
  * <p>版权所有: 版权所有(C)2017-2027</p>
- * <p>公    司: 沈阳飞网科技有限公司</p>
+ * <p>公    司: 沈阳网飞科技有限公司</p>
  * <p>内容摘要: 无</p>
  * <p>其他说明: 无</p>
- * <p>创建日期：2018年7月29日</p>
- * <p>完成日期：2018年7月29日</p>
+ * <p>创建日期：2018年8月6日</p>
+ * <p>完成日期：2018年8月6日</p>
  * <p>修改记录1: // 修改历史记录，包括修改日期、修改者及修改内容</p>
  * <pre>
- *    修改日期：上午9:48:20
+ *    修改日期：上午10:19:15
  *    版 本 号：
  *    修 改 人：
  *    修改内容：
@@ -19,23 +19,33 @@
  */
 package com.flynet.bas.model;
 
+import java.util.Date;
+
 /**
- * 项目车辆关系
+ * 车辆选择信息
  * @author zhanghuafeng
  */
-public class ProjectVehicle {
+public class VehicleSelection {
 	/**
 	 * Id
 	 */
 	private String id;
 	/**
-	 * 项目ID
+	 * 工作计划ID
 	 */
-	private String projectId;
+	private String workPlanId;
+	/**
+	 * 选车用户ID
+	 */
+	private String userId;
 	/**
 	 * 车辆ID
 	 */
 	private String vehicleId;
+	/**
+	 * 选车时间
+	 */
+	private Date selectDate;
 	/**
 	 * 开始公里数
 	 */
@@ -73,13 +83,13 @@ public class ProjectVehicle {
 	 * 
 	 */
 	public String getProjectId() {
-		return projectId;
+		return workPlanId;
 	}
 	/**
 	 * 
 	 */
 	public void setProjectId(String projectId) {
-		this.projectId = projectId;
+		this.workPlanId = projectId;
 	}
 	/**
 	 * 
@@ -152,6 +162,42 @@ public class ProjectVehicle {
 	 */
 	public void setTesters(String testers) {
 		this.testers = testers;
+	}
+	/**
+	 * 
+	 */
+	public String getWorkPlanId() {
+		return workPlanId;
+	}
+	/**
+	 * 
+	 */
+	public void setWorkPlanId(String workPlanId) {
+		this.workPlanId = workPlanId;
+	}
+	/**
+	 * 
+	 */
+	public String getUserId() {
+		return userId;
+	}
+	/**
+	 * 
+	 */
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	/**
+	 * 
+	 */
+	public Date getSelectDate() {
+		return selectDate;
+	}
+	/**
+	 * 
+	 */
+	public void setSelectDate(Date selectDate) {
+		this.selectDate = selectDate;
 	}
 	
 }

@@ -24,37 +24,37 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.flynet.bas.model.ProjectVehicle;
+import com.flynet.bas.model.WorkPlan;
 
 /**
- * 项目车辆信息映射器
+ * 工作计划映射器
  * @author zhanghuafeng
  */
 @Mapper
-public interface ProjectVehicleDao {	
+public interface WorkPlanDao {	
 	/**
-	 * 获取项目车辆信息列表
-	 * @param parameters
-	 * @return
-	 */
-	List<ProjectVehicle> getList(Map<String, Object> parameters);
-	
-	/**
-	 * 更新车辆测试信息
-	 * @param entity
-	 * @return
-	 */
-	ProjectVehicle update(ProjectVehicle entity);
-	
-	/**
-	 * 添加项目车辆信息
-	 * @param entity
-	 */
-	int addList(List<ProjectVehicle> list);
-	
-	/**
-	 * 删除项目车辆信息
+	 * 获取工作计划
 	 * @param id
 	 */
-	void delete(Map<String, Object> parameters);
+	WorkPlan get(String id);
+	/**
+	 * 获取工作计划列表
+	 * @param entity
+	 */
+	List<WorkPlan> getList(Map<String, Object> parameters);
+	/**
+	 * 添加工作计划
+	 * @param entity
+	 */
+	int add(WorkPlan entity);
+	/**
+	 * 修改工作计划
+	 * @param entity
+	 */
+	int update(WorkPlan entity);
+	/**
+	 * 删除工作计划
+	 * @param id
+	 */
+	void delete(String id);
 }

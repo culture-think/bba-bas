@@ -19,7 +19,6 @@
  */
 package com.flynet.bas.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -29,11 +28,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.flynet.bas.dao.ProjectDao;
-import com.flynet.bas.dao.ProjectUserDao;
-import com.flynet.bas.dao.ProjectVehicleDao;
 import com.flynet.bas.model.Project;
-import com.flynet.bas.model.ProjectUser;
-import com.flynet.bas.model.ProjectVehicle;
 import com.flynet.bas.service.ProjectService;
 
 /**
@@ -45,10 +40,6 @@ import com.flynet.bas.service.ProjectService;
 public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectDao projectDao;
-	@Autowired
-	private ProjectUserDao projectUserDao;
-	@Autowired
-	private ProjectVehicleDao projectVehicleDao;
 	
 	@Override
 	public List<Project> getList(Map<String, Object> parameters) {
@@ -84,41 +75,4 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDao.update(entity);
 		return entity;
 	}
-
-	@Override
-	public void updateUsers(String projectId, List<ProjectUser> projectUsers) {
-		if(projectUsers.isEmpty()){
-			return;
-		}
-		
-		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("projectId", projectId);
-		projectUserDao.delete(parameters);
-		
-		projectUsers.stream().forEach(user -> {
-			user.setId(UUID.randomUUID().toString().replaceAll("-", ""));
-			user.setProjectId(projectId);
-		});
-		
-		projectUserDao.addList(projectUsers);
-	}
-
-	@Override
-	public void updateVehicles(String projectId, List<ProjectVehicle> projectVehicles) {
-		if(projectVehicles.isEmpty()){
-			return;
-		}
-		
-		Map<String, Object> parameters = new HashMap<String, Object>();
-		parameters.put("projectId", projectId);
-		projectVehicleDao.delete(parameters);
-		
-		projectVehicles.stream().forEach(vehicle -> {
-			vehicle.setId(UUID.randomUUID().toString().replaceAll("-", ""));
-			vehicle.setProjectId(projectId);
-		});
-		
-		projectVehicleDao.addList(projectVehicles);
-	}
-
 }

@@ -35,8 +35,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.flynet.bas.model.Project;
-import com.flynet.bas.model.ProjectUser;
-import com.flynet.bas.model.ProjectVehicle;
 import com.flynet.bas.model.User;
 import com.flynet.bas.model.Vehicle;
 import com.flynet.bas.service.ProjectService;
@@ -140,15 +138,6 @@ public class ProjectController {
 		return userList;
 	}
 	
-	/**
-	 * 更新项目用户列表
-	 * @param projectId
-	 * @param users
-	 */
-	@RequestMapping(value = "/projects/{projectId}/users", method = RequestMethod.POST)
-	public void updateProjectUsers(@PathVariable String projectId, @RequestBody List<ProjectUser> users) {
-		this.projectService.updateUsers(projectId, users);
-	}
 	
 	/**
 	 * 获取项目车辆信息
@@ -164,13 +153,4 @@ public class ProjectController {
 		return vehicleList;
 	}
 	
-	/**
-	 * 更新项目车辆列表
-	 * @param projectId
-	 * @param vehicles
-	 */
-	@RequestMapping(value = "/projects/{projectId}/vehicles", method = RequestMethod.POST)
-	public void updateProjectVehicles(@PathVariable String projectId, @RequestBody List<ProjectVehicle> vehicles) {
-		this.projectService.updateVehicles(projectId, vehicles);
-	}
 }

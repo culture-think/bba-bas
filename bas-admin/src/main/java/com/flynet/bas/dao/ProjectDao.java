@@ -34,10 +34,10 @@ import com.flynet.bas.model.Project;
 public interface ProjectDao {
 	/**
 	 * 获取项目信息列表
-	 * @param paras
+	 * @param parameters
 	 * @return
 	 */
-	List<Project> getList(Map<String, Object> paras);
+	List<Project> getList(Map<String, Object> parameters);
 	
 	/**
 	 * 获取项目信息

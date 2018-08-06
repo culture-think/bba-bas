@@ -41,4 +41,17 @@ public interface ErrorCodeDefinition {
 	 */
 	int USER_PASSWORD_WRONG = 423;
 	
+	
+	/**
+	 * 项目当前的工作计划已经存在，不能创建
+	 */
+	int WORK_PLAN_EXISTED = 500;
+	/**
+	 * 项目当前的工作计划已经存在，不能修改
+	 */
+	int WORK_PLAN_NOT_EXISTED = 501;
+	/**
+	 * 项目当前的工作计划已经在使用，不能删除
+	 */
+	int WORK_PLAN_IN_USE = 502;
 }
