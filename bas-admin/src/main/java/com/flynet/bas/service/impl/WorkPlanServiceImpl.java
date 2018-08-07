@@ -239,7 +239,7 @@ public class WorkPlanServiceImpl implements WorkPlanService {
 		
 		//3、work-plan-user列表修改
 		List<WorkPlanUser> users = entity.getUsers();
-		if(users != null){
+		if(users == null){
 			users = new ArrayList<WorkPlanUser>();
 		}
 		
@@ -250,7 +250,7 @@ public class WorkPlanServiceImpl implements WorkPlanService {
 		
 		//4、work-plan-vehicle对象创建
 		List<WorkPlanVehicle> vehicles = entity.getVehicles();
-		if(vehicles != null){
+		if(vehicles == null){
 			vehicles = new ArrayList<WorkPlanVehicle>();
 		}
 		
