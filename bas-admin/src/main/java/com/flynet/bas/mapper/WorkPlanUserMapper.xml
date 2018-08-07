@@ -8,7 +8,7 @@
 	</resultMap>
 	
 	<!-- 查询工作计划用户列表 -->
-	<select id="getList" parameterType="map" resultMap="Project">
+	<select id="getList" parameterType="map" resultMap="WorkPlanUser">
 		select
 			id,
 			work_plan_id,

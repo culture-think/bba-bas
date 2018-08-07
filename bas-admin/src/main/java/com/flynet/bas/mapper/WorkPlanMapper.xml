@@ -53,7 +53,7 @@
 			#{id},
 			#{projectId},
 			#{creatorId},	
-			#{creatorTime},	
+			#{createTime},	
 			#{lastUpdateUserId},				
 			#{lastUpdateTime},								
 		</trim>
