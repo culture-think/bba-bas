@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flynet.bas.dao.WorkPlanDao">
+	<resultMap id="WorkPlan" type="com.flynet.bas.model.WorkPlan">
+		<id column="id" property="id" />
+		<result column="project_id" property="projectId" />
+		<result column="creator_id" property="creatorId" />
+		<result column="create_time" property="createTime" />
+		<result column="last_update_user_id" property="lastUpdateUserId" />	
+		<result column="last_update_time" property="lastUpdateTime" />
+	</resultMap>
+
+	<!-- 查询工作计划 -->
+	<select id="get" parameterType="string" resultMap="WorkPlan">
+		select
+			id,
+			project_id,
+			creator_id,
+			create_time,
+			last_update_user_id,
+			last_update_time
+		from work_plan
+		where id = #{id}
+	</select>
+	<!-- 查询工作计划列表 -->
+	<select id="getList" parameterType="map" resultMap="WorkPlan">
+		select
+			id,
+			project_id,
+			creator_id,
+			create_time,
+			last_update_user_id,
+			last_update_time
+		from work_plan
+		where 1 = 1
+		<if test="projectId != null">
+			and project_id = #{projectId}
+		</if>
+	</select>
+	<!-- 添加工作计划 -->
+	<insert id="add" parameterType="WorkPlan">
+		insert into work_plan (
+		<trim suffixOverrides=",">
+			id,
+			project_id,
+			creator_id,
+			create_time,
+			last_update_user_id,
+			last_update_time,
+		</trim>
+		)values (
+		<trim suffixOverrides=",">
+			#{id},
+			#{projectId},
+			#{creatorId},	
+			#{creatorTime},	
+			#{lastUpdateUserId},				
+			#{lastUpdateTime},								
+		</trim>
+		)
+	</insert>
+	<!-- 更新工作计划 -->
+	<update id="update" parameterType="WorkPlan">
+		update work_plan
+		<set>
+			<if test="lastUpdateUserId != null">
+				last_update_user_id = #{lastUpdateUserId},
+			</if>
+			<if test="lastUpdateTime != null">
+				last_update_time = #{lastUpdateTime},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 删除工作计划 -->
+	<delete id="delete" parameterType="string">
+		delete from work_plan
+		where id = #{id}
+	</delete>
+</mapper>
