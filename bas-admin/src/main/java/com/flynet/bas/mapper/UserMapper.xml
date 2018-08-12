@@ -17,7 +17,8 @@
 			users.type
 		from users
 		<if test="projectId != null">
-			join project_user pu on pu.user_id = users.id and pu.project_id = #{projectId}
+			join work_plan_user wpu on wpu.user_id = users.id 
+			join work_plan wp on wp.project_id = #{projectId}
 		</if>
 		where 1 = 1
 		<if test="loginName != null">
