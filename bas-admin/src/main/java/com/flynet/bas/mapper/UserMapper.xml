@@ -18,7 +18,7 @@
 		from users
 		<if test="projectId != null">
 			join work_plan_user wpu on wpu.user_id = users.id 
-			join work_plan wp on wp.project_id = #{projectId}
+			join work_plan wp on wp.project_id = #{projectId} and wpu.work_plan_id = wp.id
 		</if>
 		where 1 = 1
 		<if test="loginName != null">

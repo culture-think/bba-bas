@@ -39,7 +39,8 @@
 			vehicle.picture_id
 		from vehicle
 		<if test="projectId != null">
-			join project_vehicle pv on pv.vehicle_id = vehicle.id and pv.project_id = #{projectId}
+			join work_plan_vehicle wpv on wpv.vehicle_id = vehicle.id 
+			join work_plan wp on wp.project_id = #{projectId} and wpv.work_plan_id = wp.id
 		</if>		
 		where 1 = 1
 		<if test="type != null">

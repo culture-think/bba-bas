@@ -19,10 +19,50 @@
  */
 package com.flynet.bas.controller.mobile;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.flynet.bas.model.Vehicle;
+import com.flynet.bas.service.VehicleService;
+
 /**
- *
+ * 车辆移动端控制器
  * @author zhanghuafeng
  */
+@RestController
+@RequestMapping(value = "/mobile-api")
 public class VehicleMobileController {
-
+	@Autowired
+	private VehicleService vehicleService;
+	
+	/**
+	 * 获取车辆列表
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/vehicles", method = RequestMethod.GET)
+	public List<Vehicle> getVehicles(HttpServletRequest request, HttpServletResponse response) {
+		Map<String, Object> parameters = new HashMap<String, Object>();
+		
+		String projectId = request.getParameter("projectId");
+		if(projectId != null){
+			parameters.put("projectId", projectId);
+		}
+		
+		List<Vehicle> dataList = vehicleService.getList(parameters);
+		
+		return dataList;
+	}
 }
