@@ -101,7 +101,7 @@
 		where id = #{id}
 	</update>
 
-	<delete id="deleteUser" parameterType="string">
+	<delete id="delete" parameterType="string">
 		delete from users 
 		where id = #{id}
 	</delete>
