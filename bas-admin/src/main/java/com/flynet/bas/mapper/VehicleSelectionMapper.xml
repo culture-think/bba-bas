@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flynet.bas.dao.VehicleSelectionDao">
+	<resultMap id="VehicleSelection" type="com.flynet.bas.model.VehicleSelection">
+		<id column="id" property="id" />
+		<result column="work_plan_id" property="workPlanId" />
+		<result column="user_id" property="userId" />
+		<result column="vehicle_id" property="vehicleId" />
+		<result column="select_date" property="selectDate" />
+		<result column="begin_km" property="beginKm" />
+		<result column="finish_km" property="finishKm" />
+		<result column="temperature" property="temperature" />
+		<result column="weather" property="weather" />
+		<result column="testers" property="testers" />
+	</resultMap>
+
+	<!-- 查询车辆选择信息 -->
+	<select id="get" parameterType="string" resultMap="VehicleSelection">
+		select
+			id,
+			work_plan_id,
+			user_id,
+			vehicle_id,
+			select_date,
+			begin_km,
+			finish_km,
+			temperature,
+			weather,
+			testers
+		from vehicle_selection
+		where id = #{id}
+	</select>
+	<!-- 查询车辆列表 -->
+	<select id="getList" parameterType="map" resultMap="VehicleSelection">
+		select
+			id,
+			work_plan_id,
+			user_id,
+			vehicle_id,
+			select_date,
+			begin_km,
+			finish_km,
+			temperature,
+			weather,
+			testers
+		from vehicle_selection	
+		where 1 = 1
+		<if test="workPlanId != null">
+			and work_plan_id = #{workPlanId}
+		</if>
+		<if test="userId != null">
+			and user_id = #{userId}
+		</if>
+		<if test="vehicleId != null">
+			and vehicle_id = #{vehicleId}
+		</if>
+	</select>	
+	<!-- 添加车辆选择信息 -->
+	<insert id="add" parameterType="VehicleSelection">
+		insert into vehicle_selection (
+		<trim suffixOverrides=",">
+			id,
+			work_plan_id,
+			user_id,
+			vehicle_id,
+			select_date,
+			begin_km,
+			finish_km,
+			temperature,
+			weather,
+			testers,
+		</trim>
+		)values (
+		<trim suffixOverrides=",">
+			#{id},
+			#{workPlanId},
+			#{userId},
+			#{vehicleId},
+			#{selectDate},
+			#{beginKm},
+			#{finishKm},
+			#{temperature},
+			#{weather},
+			#{testers},						
+		</trim>
+		)
+	</insert>
+	<!-- 更新车辆选择信息 -->
+	<update id="update" parameterType="VehicleSelection">
+		update vehicle_selection
+		<set>
+			<if test="workPlanId != null">
+				work_plan_id = #{workPlanId},
+			</if>
+			<if test="userId != null">
+				user_id = #{userId},
+			</if>
+			<if test="vehicleId != null">
+				vehicle_id = #{vehicleId},
+			</if>
+			<if test="selectDate != null">
+				select_date = #{selectDate},
+			</if>
+			<if test="beginKm != null">
+				begin_km = #{beginKm},
+			</if>
+			<if test="finishKm != null">
+				finish_km = #{finishKm},
+			</if>
+			<if test="temperature != null">
+				temperature = #{temperature},
+			</if>
+			<if test="weather != null">
+				weather = #{weather},
+			</if>
+			<if test="testers != null">
+				testers = #{testers},
+			</if>						
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 删除车辆选择信息 -->
+	<delete id="delete" parameterType="string">
+		delete from vehicle_selection
+		where id = #{id}
+	</delete>
+</mapper>

@@ -200,4 +200,7 @@ public class VehicleSelection {
 		this.selectDate = selectDate;
 	}
 	
+	public String getKey(){
+		return this.workPlanId + this.vehicleId;
+	}
 }

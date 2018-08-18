@@ -40,6 +40,10 @@ public class WorkPlanVehicle {
 	 * 车辆
 	 */
 	private Vehicle vehicle;
+    /**
+     * 车辆选择信息
+     */
+    private VehicleSelection selection;
 	/**
 	 * 
 	 */
@@ -88,4 +92,17 @@ public class WorkPlanVehicle {
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
+	/**
+	 * 
+	 */
+	public VehicleSelection getSelection() {
+		return selection;
+	}
+	/**
+	 * 
+	 */
+	public void setSelection(VehicleSelection selection) {
+		this.selection = selection;
+	}
+	
 }

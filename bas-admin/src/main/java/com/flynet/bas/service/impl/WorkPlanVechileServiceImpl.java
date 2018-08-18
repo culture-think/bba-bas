@@ -29,8 +29,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.flynet.bas.dao.VehicleDao;
+import com.flynet.bas.dao.VehicleSelectionDao;
 import com.flynet.bas.dao.WorkPlanVehicleDao;
 import com.flynet.bas.model.Vehicle;
+import com.flynet.bas.model.VehicleSelection;
 import com.flynet.bas.model.WorkPlanVehicle;
 import com.flynet.bas.service.WorkPlanVehicleService;
 
@@ -45,6 +47,8 @@ public class WorkPlanVechileServiceImpl implements WorkPlanVehicleService {
 	private WorkPlanVehicleDao workPlanVehicleDao;
 	@Autowired
 	private VehicleDao vehicleDao;
+	@Autowired
+	private VehicleSelectionDao selectionDao;
 	
 	@Override
 	public List<WorkPlanVehicle> getList(Map<String, Object> parameters) {
@@ -57,7 +61,12 @@ public class WorkPlanVechileServiceImpl implements WorkPlanVehicleService {
 		//2、设置车辆
 		parameters = new HashMap<String, Object>();
 		Map<String, Vehicle> vehicleMap = vehicleDao.getList(parameters).stream().collect(Collectors.toMap(Vehicle::getId, entity -> entity, (k1, k2) -> k2));
-		list.forEach(workPlanVehicle -> workPlanVehicle.setVehicle(vehicleMap.get(workPlanVehicle.getVehicleId())));
+		Map<String, VehicleSelection> selectionMap = selectionDao.getList(parameters).stream().collect(Collectors.toMap(VehicleSelection::getKey, entity -> entity, (k1, k2) -> k2));
+		
+		list.forEach(workPlanVehicle -> {
+			workPlanVehicle.setVehicle(vehicleMap.get(workPlanVehicle.getVehicleId()));
+			workPlanVehicle.setSelection(selectionMap.get(workPlanVehicle.getId() + workPlanVehicle.getVehicleId()));
+		});
 		
 		//3、返回结果
 		return list;
