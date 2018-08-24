@@ -40,6 +40,18 @@ public interface TopicDao {
 	List<Topic> getList(Map<String, Object> parameters);
 	
 	/**
+	 * 添加问题列表
+	 * @param list
+	 */
+	int addList(List<Topic> list);
+	
+	/**
+	 * 添加问题
+	 * @param entity
+	 */
+	int add(Topic entity);
+	
+	/**
 	 * 修改问题信息
 	 * @param entity
 	 */

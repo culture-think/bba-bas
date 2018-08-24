@@ -37,6 +37,13 @@ public interface TopicService {
 	List<Topic> getList(Map<String, Object> parameters);
 	
 	/**
+	 * 添加问题信息
+	 * @param entity
+	 * @return
+	 */
+	Topic add(Topic entity);
+	
+	/**
 	 * 修改问题信息
 	 * @param entity
 	 * @return

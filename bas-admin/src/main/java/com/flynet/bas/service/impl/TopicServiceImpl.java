@@ -19,13 +19,16 @@
  */
 package com.flynet.bas.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flynet.bas.dao.TopicDao;
 import com.flynet.bas.model.Topic;
 import com.flynet.bas.service.TopicService;
 
@@ -36,42 +39,48 @@ import com.flynet.bas.service.TopicService;
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
 public class TopicServiceImpl implements TopicService {
+	@Autowired
+	private TopicDao topicDao;
 
 	@Override
 	public List<Topic> getList(Map<String, Object> parameters) {
-		List<Topic> list = new ArrayList<Topic>();
-		
-		//TODO
-		//TODO
-		//TODO
+		List<Topic> list = topicDao.getList(parameters);
 		
 		return list;
+	}
+	
+	@Override
+	public Topic add(Topic entity) {
+		entity.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+		
+		topicDao.add(entity);
+		return entity;
 	}
 
 	@Override
 	public Topic update(Topic entity) {
-		//TODO
-		//TODO
-		//TODO
+		topicDao.update(entity);
 		
 		return entity;
 	}
 
 	@Override
 	public List<Topic> updateList(List<Topic> list) {
-		//TODO
-		//TODO
-		//TODO
+		List<Topic> newList = list.stream().filter(topic -> topic.getId() == null).collect(Collectors.toList());
+		newList.stream().forEach(topic -> topic.setId(UUID.randomUUID().toString().replaceAll("-", "")));
+		topicDao.addList(newList);
 		
-		return list;
+		List<Topic> updateList = list.stream().filter(topic -> topic.getId() != null).collect(Collectors.toList());
+		updateList.stream().forEach(topic -> topicDao.update(topic));
+		
+		newList.addAll(updateList);
+		
+		return newList;
 	}
 
 	@Override
 	public void delete(String id) {
-		//TODO
-		//TODO
-		//TODO
-		
+		topicDao.delete(id);
 	}
 
 }

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.flynet.bas.dao.TopicDao">
+	<resultMap id="Topic" type="com.flynet.bas.model.Topic">
+		<id column="id" property="id" />
+		<result column="work_plan_id" property="workPlanId" />
+		<result column="vehicle_id" property="vehicleId" />
+		<result column="order_number" property="orderNumber" />
+		<result column="problem_description" property="problemDescription" />
+		<result column="bi" property="bi" />
+		<result column="comment" property="comment" />
+		<result column="tester_id" property="testerId" />
+		<result column="status" property="status" />
+		<result column="analyse_department" property="analyseDepartment" />
+		<result column="new_or_old" property="newOrOld" />
+		<result column="specialist" property="specialist" />
+		<result column="specialist_bi" property="specialistBi" />
+		<result column="pqm_alm_number" property="pqmAlmNumber" />
+		<result column="atg_it_number" property="atgItNumber" />
+		<result column="remark" property="remark" />
+	</resultMap>
+
+	<!-- 查询问题列表 -->
+	<select id="getList" parameterType="map" resultMap="Topic">
+		select
+			id,
+			work_plan_id,
+			vehicle_id,
+			order_number,
+			problem_description,
+			bi,
+			comment,
+			tester_id,
+			status,
+			analyse_department,
+			new_or_old,specialist,
+			specialist_bi,
+			pqm_alm_number,
+			atg_it_number,
+			remark
+		from topic
+		where 1 = 1
+		<if test="workPlanId != null">
+			and work_plan_id = #{workPlanId}
+		</if>
+		<if test="vehicleId != null">
+			and vehicle_id = #{vehicleId}
+		</if>
+		order by order_number
+	</select>
+
+	<!-- 添加问题列表 -->
+	<insert id="addList" parameterType="Topic">
+		insert into topic (
+		<trim suffixOverrides=",">
+			id,
+			work_plan_id,
+			vehicle_id,
+			order_number,
+			problem_description,
+			bi,
+			comment,
+			tester_id,
+			status,
+			analyse_department,
+			new_or_old,
+			specialist,
+			specialist_bi,
+			pqm_alm_number,
+			atg_it_number,
+			remark,
+		</trim>
+		) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			<trim suffixOverrides=",">
+				#{item.id},
+				#{item.workPlanId},
+				#{item.vehicleId},
+				#{item.orderNumber},
+				#{item.problemDescription},
+				#{item.bi},
+				#{item.comment},
+				#{item.testerId},
+				#{item.status},
+				#{item.analyseDepartment},
+				#{item.newOrOld},
+				#{item.specialist},
+				#{item.specialistBi},
+				#{item.pqmAlmNumber},
+				#{item.atgItNumber},
+				#{item.remark},
+			</trim>
+			)
+		</foreach>
+	</insert>
+
+	<!-- 添加问题 -->
+	<insert id="add" parameterType="Topic">
+		insert into topic (
+		<trim suffixOverrides=",">
+			id,
+			work_plan_id,
+			vehicle_id,
+			order_number,
+			problem_description,
+			bi,
+			comment,
+			tester_id,
+			status,
+			analyse_department,
+			new_or_old,
+			specialist,
+			specialist_bi,
+			pqm_alm_number,
+			atg_it_number,
+			remark,
+		</trim>
+		) values
+		(
+		<trim suffixOverrides=",">
+			#{id},
+			#{workPlanId},
+			#{vehicleId},
+			#{orderNumber},
+			#{problemDescription},
+			#{bi},
+			#{comment},
+			#{testerId},
+			#{status},
+			#{analyseDepartment},
+			#{newOrOld},
+			#{specialist},
+			#{specialistBi},
+			#{pqmAlmNumber},
+			#{atgItNumber},
+			#{remark},
+		</trim>
+		)
+	</insert>
+	<!-- 更新用户数据 -->
+	<update id="update" parameterType="Topic">
+		update topic
+		<set>
+			<trim suffixOverrides=",">
+				<if test="orderNumber != null">
+					order_number = #{orderNumber},
+				</if>
+				<if test="problemDescription != null">
+					problem_description = #{problemDescription},
+				</if>
+				<if test="bi != null">
+					bi = #{bi},
+				</if>
+				<if test="comment != null">
+					comment = #{comment},
+				</if>
+				<if test="testerId != null">
+					tester_id = #{testerId},
+				</if>
+				<if test="status != null">
+					status = #{status},
+				</if>
+				
+				<if test="analyseDepartment != null">
+					analyse_department = #{analyseDepartment},
+				</if>
+				<if test="newOrOld != null">
+					new_or_old = #{newOrOld},
+				</if>
+				<if test="specialist != null">
+					specialist = #{specialist},
+				</if>
+				<if test="specialistBi != null">
+					specialist_bi = #{specialistBi},
+				</if>			
+				<if test="pqmAlmNumber != null">
+					pqm_alm_number = #{pqmAlmNumber},
+				</if>
+				<if test="atgItNumber != null">
+					atg_it_number = #{atgItNumber},
+				</if>
+				<if test="remark != null">
+					remark = #{remark},
+				</if>										
+			</trim>
+		</set>
+		where id = #{id}
+	</update>
+	<!-- 删除问题 -->
+	<delete id="delete" parameterType="string">
+		delete from topic
+		where id =
+		#{id}
+	</delete>
+</mapper>
