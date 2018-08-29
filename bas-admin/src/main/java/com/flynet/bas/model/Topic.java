@@ -19,6 +19,8 @@
  */
 package com.flynet.bas.model;
 
+import java.util.List;
+
 /**
  * 问题
  * @author zhanghuafeng
@@ -96,6 +98,17 @@ public class Topic {
 	 * 车辆
 	 */
 	private Vehicle vehicle;
+	
+    /**
+     * 视频
+     */
+    private List<Document> vedios;
+    
+    /**
+     * 图片列表
+     */
+    private List<Document> pictures;
+    
 	/**
 	 * 
 	 */
@@ -311,6 +324,30 @@ public class Topic {
 	 */
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
+	}
+	/**
+	 * 
+	 */
+	public List<Document> getVedios() {
+		return vedios;
+	}
+	/**
+	 * 
+	 */
+	public void setVedios(List<Document> vedios) {
+		this.vedios = vedios;
+	}
+	/**
+	 * 
+	 */
+	public List<Document> getPictures() {
+		return pictures;
+	}
+	/**
+	 * 
+	 */
+	public void setPictures(List<Document> pictures) {
+		this.pictures = pictures;
 	}
 	
 }
