@@ -100,7 +100,7 @@ public class Topic {
 	private Vehicle vehicle;
 	
     /**
-     * 视频
+     * 视频列表
      */
     private List<Document> vedios;
     
