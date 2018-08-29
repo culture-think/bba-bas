@@ -19,6 +19,8 @@
  */
 package com.flynet.bas.service.impl;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -28,7 +30,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flynet.bas.dao.DocumentDao;
 import com.flynet.bas.dao.TopicDao;
+import com.flynet.bas.model.Document;
 import com.flynet.bas.model.Topic;
 import com.flynet.bas.service.TopicService;
 
@@ -41,10 +45,35 @@ import com.flynet.bas.service.TopicService;
 public class TopicServiceImpl implements TopicService {
 	@Autowired
 	private TopicDao topicDao;
+	@Autowired
+	private DocumentDao documentDao;
+	
+	private String topicPictureCategory = "topic.picture";
+	private String topicVideoCategory = "topic.video";
 
 	@Override
 	public List<Topic> getList(Map<String, Object> parameters) {
+		parameters = new HashMap<String, Object>();
+		parameters.put("category", topicPictureCategory);
+		Map<String, List<Document>> picturesMap = documentDao.getList(parameters).stream().collect(Collectors.groupingBy(Document::getExtendId));
+		
+		parameters.put("category", topicVideoCategory);
+		Map<String, List<Document>> videosMap = documentDao.getList(parameters).stream().collect(Collectors.groupingBy(Document::getExtendId));
+		
 		List<Topic> list = topicDao.getList(parameters);
+		list.forEach(topic -> {
+			List<Document> pictures = picturesMap.get(topic.getId());
+			if(pictures == null){
+				pictures = new ArrayList<Document>();
+			}
+			topic.setPictures(pictures);
+			
+			List<Document> videos = videosMap.get(topic.getId());
+			if(videos == null){
+				videos = new ArrayList<Document>();
+			}
+			topic.setVideos(videos);
+		});
 		
 		return list;
 	}

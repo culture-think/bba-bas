@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.flynet.bas.dao.DocumentDao">
+	<resultMap id="Document" type="com.flynet.bas.model.Document">
+		<id column="id" property="id" /><!-- 文档ID -->
+		<result column="category" property="category" /><!-- 文档分类 -->
+		<result column="extend_id" property="extendId" /><!-- 扩展ID -->
+		<result column="file_path" property="filePath" /><!-- 文件路径 -->
+		<result column="name" property="name" /><!-- 文件名称 -->
+		<result column="parent_id" property="parentId" /><!-- 父文档ID -->
+		<result column="type" property="type" /><!-- 文档类型 -->
+		<result column="url" property="url" /><!-- 文档URL -->
+		<result column="create_time" property="createTime" /><!-- 文档URL -->
+		<result column="create_user_id" property="createUserId" /><!-- 文档URL -->
+	</resultMap>
+	<insert id="add" parameterType="Document">
+		insert into document(
+		<trim suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="category != null">
+				category,
+			</if>
+			<if test="extendId != null">
+				extend_id,
+			</if>
+			<if test="filePath != null">
+				file_path,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="url != null">
+				url,
+			</if>
+			<if test="createTime != null">
+				create_time,
+			</if>
+			<if test="createUserId != null">
+				create_user_id,
+			</if>
+
+		</trim>
+		) values (
+		<trim suffixOverrides=",">
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="category != null">
+				#{category},
+			</if>
+			<if test="extendId != null">
+				#{extendId},
+			</if>
+			<if test="filePath != null">
+				#{filePath},
+			</if>
+			<if test="name != null">
+				#{name},
+			</if>
+			<if test="parentId != null">
+				#{parentId},
+			</if>
+			<if test="type != null">
+				#{type},
+			</if>
+			<if test="url != null">
+				#{url},
+			</if>
+			<if test="createTime != null">
+				#{createTime},
+			</if>
+			<if test="createUserId != null">
+				#{createUserId},
+			</if>
+		</trim>
+		)
+	</insert>
+	<insert id="addList" parameterType="Document">
+		insert into document(
+		id,
+		category,
+		extend_id,
+		file_path,
+		name,
+		parent_id,
+		type,
+		url,
+		create_time,
+		create_user_id
+		) values
+		<foreach collection="list" item="item" index="index"
+			separator=",">
+			(
+			#{item.id},
+			#{item.category},
+			#{item.extendId},
+			#{item.filePath},
+			#{item.name},
+			#{item.parentId},
+			#{item.type},
+			#{item.url},
+			#{item.createTime},
+			#{item.createUserId}
+			)
+		</foreach>
+	</insert>
+	<delete id="delete" parameterType="string">
+		delete
+		from Document
+		where
+		id =
+		#{id}
+	</delete>
+
+	<delete id="deleteList" parameterType="map">
+		delete
+		from Document
+		where 1 = 1
+		<if test="extendId != null">
+			and extend_id = #{extendId}
+		</if>
+		<if test="type != null">
+			and type = #{type}
+		</if>
+		<if test="category != null">
+			and category = #{category}
+		</if>
+		<if test="ids != null and !ids.isEmpty()">
+			and id in
+			<foreach item="id" index="index" collection="ids" open="("
+				separator="," close=")">
+				#{id}
+			</foreach>
+		</if>
+
+	</delete>
+
+	<select id="get" resultMap="Document" parameterType="string">
+		select
+		id,
+		category,
+		extend_id,
+		file_path,
+		name,
+		parent_id,
+		type,
+		url,
+		create_time,
+		create_user_id
+		from document
+		where id = #{id}
+	</select>
+	<select id="getListByExtendId" resultMap="Document" parameterType="string">
+		select
+		id,
+		category,
+		extend_id,
+		file_path,
+		name,
+		parent_id,
+		type,
+		url,
+		create_time,
+		create_user_id
+		from document
+		where extend_id in
+		 <foreach item="item" collection="list" separator="," open="(" close=")" index="">  
+                #{item}        
+         </foreach> 
+	</select>
+
+	<select id="getList" resultMap="Document" parameterType="map">
+		select
+		id,
+		category,
+		extend_id,
+		file_path,
+		name,
+		parent_id,
+		type,
+		url,
+		create_time,
+		create_user_id
+		from document
+		where 1 = 1
+		<if test="category != null">
+			and category = #{category}
+		</if>
+		<if test="extendId != null">
+			and extend_id = #{extendId}
+		</if>
+		<if test="filePath != null">
+			and file_path = #{filePath}
+		</if>
+		<if test="name != null">
+			and name = #{name}
+		</if>
+		<if test="parentId != null">
+			and parent_id = #{parentId}
+		</if>
+		<if test="type != null">
+			and type = #{type}
+		</if>
+		<if test="url != null">
+			and url = #{url}
+		</if>
+		<if test="createTime != null">
+			and create_time = #{createTime}
+		</if>
+		<if test="createUserId != null">
+			and create_user_id = #{createUserId}
+		</if>
+		<if test="ids != null and !ids.isEmpty()">
+			and id in
+			<foreach item="id" index="index" collection="ids" open="("
+				separator="," close=")">
+				#{id}
+			</foreach>
+		</if>
+		
+		<!--获取无用文档记录 begin-->
+		<if test="createdBefore != null">
+			and create_time &lt; #{createdBefore, jdbcType=DATE}
+		</if>
+		<if test="noused != null and noused == true">
+			and document.category in ('project.picture', 'vehicle.picture', 'topic.picture', 'topic.video')
+			and not exists(select 1 from project where project.picture_id = document.id)
+			and not exists(select 1 from vehicle where vehicle.picture_id = document.id)
+			and not exists(select 1 from topic   where topic.id = document.extend_id)
+		</if>
+		<!--获取无用文档记录 end-->
+	</select>
+</mapper>

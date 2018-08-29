@@ -102,7 +102,7 @@ public class Topic {
     /**
      * 视频列表
      */
-    private List<Document> vedios;
+    private List<Document> videos;
     
     /**
      * 图片列表
@@ -328,14 +328,14 @@ public class Topic {
 	/**
 	 * 
 	 */
-	public List<Document> getVedios() {
-		return vedios;
+	public List<Document> getVideos() {
+		return videos;
 	}
 	/**
 	 * 
 	 */
-	public void setVedios(List<Document> vedios) {
-		this.vedios = vedios;
+	public void setVideos(List<Document> videos) {
+		this.videos = videos;
 	}
 	/**
 	 * 
