@@ -22,12 +22,15 @@ package com.flynet.bas.service.impl;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flynet.bas.dao.DocumentDao;
 import com.flynet.bas.dao.VehicleDao;
+import com.flynet.bas.model.Document;
 import com.flynet.bas.model.Vehicle;
 import com.flynet.bas.service.VehicleService;
 
@@ -40,10 +43,24 @@ import com.flynet.bas.service.VehicleService;
 public class VehicleServiceImpl implements VehicleService {
 	@Autowired
 	private VehicleDao vehicleDao;
+	@Autowired
+	private DocumentDao documentDao;
+	
+	private String vehiclePictureCategory = "vehicle.picture";
 	
 	@Override
 	public List<Vehicle> getList(Map<String, Object> parameters) {
 		List<Vehicle> list = vehicleDao.getList(parameters);
+		
+		parameters.clear();
+		parameters.put("category", vehiclePictureCategory);
+		Map<String, Document> documentMap = documentDao.getList(parameters).stream().collect(Collectors.toMap(Document::getId, entity -> entity, (k1, k2) -> k2));
+		
+		list.forEach(Vehicle -> {
+			if(Vehicle.getPictureId() != null){
+				Vehicle.setPictureDocument(documentMap.get(Vehicle.getPictureId()));
+			}
+		});
 		
 		return list;
 	}
@@ -51,6 +68,9 @@ public class VehicleServiceImpl implements VehicleService {
 	@Override
 	public Vehicle get(String id) {
 		Vehicle entity = vehicleDao.get(id);
+		if(entity.getPictureId() != null){
+			entity.setPictureDocument(documentDao.get(entity.getPictureId()));
+		}
 		
 		return entity;
 	}

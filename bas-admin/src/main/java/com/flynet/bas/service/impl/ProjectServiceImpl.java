@@ -22,12 +22,15 @@ package com.flynet.bas.service.impl;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flynet.bas.dao.DocumentDao;
 import com.flynet.bas.dao.ProjectDao;
+import com.flynet.bas.model.Document;
 import com.flynet.bas.model.Project;
 import com.flynet.bas.service.ProjectService;
 
@@ -40,17 +43,34 @@ import com.flynet.bas.service.ProjectService;
 public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectDao projectDao;
+	@Autowired
+	private DocumentDao documentDao;
+	
+	private String projectPictureCategory = "project.picture";
 	
 	@Override
 	public List<Project> getList(Map<String, Object> parameters) {
 		List<Project> list = projectDao.getList(parameters);
 		
+		parameters.clear();
+		parameters.put("category", projectPictureCategory);
+		Map<String, Document> documentMap = documentDao.getList(parameters).stream().collect(Collectors.toMap(Document::getId, entity -> entity, (k1, k2) -> k2));
+		
+		list.forEach(project -> {
+			if(project.getPictureId() != null){
+				project.setPictureDocument(documentMap.get(project.getPictureId()));
+			}
+		});
 		return list;
 	}
 
 	@Override
 	public Project get(String id) {
 		Project entity = projectDao.get(id);
+		
+		if(entity.getPictureId() != null){
+			entity.setPictureDocument(documentDao.get(entity.getPictureId()));
+		}
 		
 		return entity;
 	}
