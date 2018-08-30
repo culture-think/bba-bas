@@ -57,7 +57,7 @@ public class VehicleSelection {
 	/**
 	 * 温度
 	 */
-	private Float temperature;
+	private Integer temperature;
 	/**
 	 * 天气
 	 */
@@ -130,13 +130,13 @@ public class VehicleSelection {
 	/**
 	 * 
 	 */
-	public Float getTemperature() {
+	public Integer getTemperature() {
 		return temperature;
 	}
 	/**
 	 * 
 	 */
-	public void setTemperature(Float temperature) {
+	public void setTemperature(Integer temperature) {
 		this.temperature = temperature;
 	}
 	/**
