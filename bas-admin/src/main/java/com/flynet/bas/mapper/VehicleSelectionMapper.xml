@@ -11,7 +11,7 @@
 		<result column="finish_km" property="finishKm" />
 		<result column="temperature" property="temperature" />
 		<result column="weather" property="weather" />
-		<result column="testers" property="testers" />
+		<result column="tester_id" property="testerId" />
 	</resultMap>
 
 	<!-- 查询车辆选择信息 -->
@@ -26,7 +26,7 @@
 			finish_km,
 			temperature,
 			weather,
-			testers
+			tester_id
 		from vehicle_selection
 		where id = #{id}
 	</select>
@@ -42,7 +42,7 @@
 			finish_km,
 			temperature,
 			weather,
-			testers
+			tester_id
 		from vehicle_selection	
 		where 1 = 1
 		<if test="workPlanId != null">
@@ -68,7 +68,7 @@
 			finish_km,
 			temperature,
 			weather,
-			testers,
+			tester_id,
 		</trim>
 		)values (
 		<trim suffixOverrides=",">
@@ -81,7 +81,7 @@
 			#{finishKm},
 			#{temperature},
 			#{weather},
-			#{testers},						
+			#{testerId},						
 		</trim>
 		)
 	</insert>
@@ -113,8 +113,8 @@
 			<if test="weather != null">
 				weather = #{weather},
 			</if>
-			<if test="testers != null">
-				testers = #{testers},
+			<if test="testerId != null">
+				tester_id = #{testerId},
 			</if>						
 		</set>
 		where id = #{id}

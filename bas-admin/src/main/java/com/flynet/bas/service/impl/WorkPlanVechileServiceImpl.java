@@ -28,9 +28,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.flynet.bas.dao.UserDao;
 import com.flynet.bas.dao.VehicleDao;
 import com.flynet.bas.dao.VehicleSelectionDao;
 import com.flynet.bas.dao.WorkPlanVehicleDao;
+import com.flynet.bas.model.User;
 import com.flynet.bas.model.Vehicle;
 import com.flynet.bas.model.VehicleSelection;
 import com.flynet.bas.model.WorkPlanVehicle;
@@ -49,6 +51,8 @@ public class WorkPlanVechileServiceImpl implements WorkPlanVehicleService {
 	private VehicleDao vehicleDao;
 	@Autowired
 	private VehicleSelectionDao selectionDao;
+	@Autowired
+	private UserDao userDao;
 	
 	@Override
 	public List<WorkPlanVehicle> getList(Map<String, Object> parameters) {
@@ -62,10 +66,17 @@ public class WorkPlanVechileServiceImpl implements WorkPlanVehicleService {
 		parameters = new HashMap<String, Object>();
 		Map<String, Vehicle> vehicleMap = vehicleDao.getList(parameters).stream().collect(Collectors.toMap(Vehicle::getId, entity -> entity, (k1, k2) -> k2));
 		Map<String, VehicleSelection> selectionMap = selectionDao.getList(parameters).stream().collect(Collectors.toMap(VehicleSelection::getKey, entity -> entity, (k1, k2) -> k2));
+		Map<String, User> userMap = userDao.getList(parameters).stream().collect(Collectors.toMap(User::getId, entity -> entity, (k1, k2) -> k2));
 		
 		list.forEach(workPlanVehicle -> {
 			workPlanVehicle.setVehicle(vehicleMap.get(workPlanVehicle.getVehicleId()));
-			workPlanVehicle.setSelection(selectionMap.get(workPlanVehicle.getId() + workPlanVehicle.getVehicleId()));
+			
+			VehicleSelection selection = selectionMap.get(workPlanVehicle.getId() + workPlanVehicle.getVehicleId());
+			workPlanVehicle.setSelection(selection);
+			
+			if(selection != null && selection.getTesterId() != null){
+				selection.setTester(userMap.get(selection.getTesterId()));
+			}
 		});
 		
 		//3、返回结果
