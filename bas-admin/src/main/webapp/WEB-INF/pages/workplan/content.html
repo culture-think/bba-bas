@@ -1,0 +1,54 @@
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<!-- BEGIN CONTENT -->
+<div class="page-content-wrapper">
+	<!-- BEGIN CONTENT BODY -->
+	<div class="page-content">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="portlet light form-fit bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="icon-social-dribbble font-green"></i> <span class="caption-subject font-green bold uppercase">Work Plan</span>
+						</div>
+					</div>
+					<div class="portlet-body form">
+						<!-- BEGIN FORM-->
+						<form action="" class="form-horizontal form-row-seperated" id="workplan_form">
+							<div class="form-body">
+								<input type="hidden" id="id" name="id" class="form-control"></input>
+								<div class="form-group">
+									<label class="control-label col-md-3">Vehicles</label>
+									<div class="col-md-9">
+										<select multiple="multiple" class="multi-select" id="vehiclesMultiSelect" name="vehiclesMultiSelect[]" style="position: absolute; left: -9999px;">
+										</select>
+									</div>
+								</div>
+								<div class="form-group last">
+									<label class="control-label col-md-3">Users</label>
+									<div class="col-md-9">
+										<select multiple="multiple" class="multi-select" id="usersMultiSelect" name="usersMultiSelect[]" style="position: absolute; left: -9999px;">
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-actions">
+								<div class="row">
+									<div class="col-md-offset-3 col-md-9">
+										<button type="submit" class="btn green">
+											<i class="fa fa-check"></i> Submit
+										</button>
+										<button type="button" class="btn grey-salsa btn-outline">Cancel</button>
+									</div>
+								</div>
+							</div>
+						</form>
+						<!-- END FORM-->
+					</div>
+				</div>
+				<!-- END PORTLET-->
+			</div>
+		</div>
+	</div>
+	<!-- END CONTENT BODY -->
+</div>
+<!-- END CONTENT -->

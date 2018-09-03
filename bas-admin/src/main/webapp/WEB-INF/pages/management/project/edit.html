@@ -1,0 +1,38 @@
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
+<div id="edit-modal" class="modal fade" tabindex="-1">
+	<form action="" id="form_edit" method="post" class="form-horizontal" role="form">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+
+			<h4 class="modal-title">EDIT PROJECT</h4>
+
+		</div>
+		<div class="modal-body">
+			<div class="alert alert-danger display-hide">
+				<button class="close" data-close="alert"></button>
+				表单验证存在错误，请检查
+			</div>
+			<div class="alert alert-success display-hide">
+				<button class="close" data-close="alert"></button>
+				表单验证全部通过
+			</div>
+
+			<input type="hidden" id="id" name="id" class="form-control"></input>
+			<input type="hidden" id="projectId" name="projectId" class="form-control"></input>
+			<div class="form-group">
+				<label class="control-label col-md-4">Project Name: </label>
+				<div class="col-md-6">
+					<input type="text" id="name" name="name" data-required="1" class="form-control" />
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer form-actions">
+			<div class="row">
+				<div class="col-md-offset-3 col-md-9">
+					<button type="submit" class="btn bba-blue">Confirm</button>
+					<button type="button" class="btn default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
