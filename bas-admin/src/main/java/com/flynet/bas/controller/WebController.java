@@ -19,7 +19,10 @@
  */
 package com.flynet.bas.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -38,23 +41,23 @@ public class WebController {
 		return "login";
 	}
 	
-	@RequestMapping(value = "/vehicle")
-	public String vehicle() {
-		return "vehicle/main";
-	}
-	
-	@RequestMapping(value = "/report")
-	public String report() {
-		return "report/main";
+	@RequestMapping(value = "/userManagement")
+	public String userManagement() {
+		return "management/user/main";
 	}
 
-	@RequestMapping(value = "/history")
-	public String history() {
-		return "history/main";
+	@RequestMapping(value = "/projectManagement")
+	public String projectManagement() {
+		return "management/project/main";
 	}
-	
-	@RequestMapping(value = "/transmission")
-	public String transmission() {
-		return "transmission/main";
+	@RequestMapping(value = "/vehicleInformation")
+	public String vehicleInformation() {
+		return "vehicleInformation/main";
+	}
+	@RequestMapping(value = "/workplan")
+	public String workplan(HttpServletRequest request, Model model) {
+		String projectId = request.getParameter("projectId");
+		model.addAttribute("projectId", projectId);
+		return "workplan/main";
 	}
 }

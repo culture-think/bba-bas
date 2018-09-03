@@ -57,15 +57,19 @@ public class VehicleSelection {
 	/**
 	 * 温度
 	 */
-	private Float temperature;
+	private Integer temperature;
 	/**
 	 * 天气
 	 */
 	private String weather;
 	/**
-	 * 测试人员：存储ID，逗号分隔，显示姓名
+	 * 测试人员ID
 	 */
-	private String testers;
+	private String testerId;
+	/**
+	 * 测试人员
+	 */
+	private User tester;
 
 	/**
 	 * 
@@ -130,13 +134,13 @@ public class VehicleSelection {
 	/**
 	 * 
 	 */
-	public Float getTemperature() {
+	public Integer getTemperature() {
 		return temperature;
 	}
 	/**
 	 * 
 	 */
-	public void setTemperature(Float temperature) {
+	public void setTemperature(Integer temperature) {
 		this.temperature = temperature;
 	}
 	/**
@@ -154,14 +158,26 @@ public class VehicleSelection {
 	/**
 	 * 
 	 */
-	public String getTesters() {
-		return testers;
+	public String getTesterId() {
+		return testerId;
 	}
 	/**
 	 * 
 	 */
-	public void setTesters(String testers) {
-		this.testers = testers;
+	public void setTesterId(String testerId) {
+		this.testerId = testerId;
+	}
+	/**
+	 * 
+	 */
+	public User getTester() {
+		return tester;
+	}
+	/**
+	 * 
+	 */
+	public void setTester(User tester) {
+		this.tester = tester;
 	}
 	/**
 	 * 

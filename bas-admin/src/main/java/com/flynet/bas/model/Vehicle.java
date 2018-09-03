@@ -57,6 +57,10 @@ public class Vehicle {
      * 图片ID
      */
     private String pictureId;
+    /**
+     * 项目图片
+     */
+    private Document pictureDocument;
 	/**
 	 * 
 	 */
@@ -152,6 +156,18 @@ public class Vehicle {
 	 */
 	public void setPictureId(String pictureId) {
 		this.pictureId = pictureId;
+	}
+	/**
+	 * 
+	 */
+	public Document getPictureDocument() {
+		return pictureDocument;
+	}
+	/**
+	 * 
+	 */
+	public void setPictureDocument(Document pictureDocument) {
+		this.pictureDocument = pictureDocument;
 	}
 	
 }

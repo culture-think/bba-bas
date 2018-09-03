@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>BBA ATG DRIVE EVENT | Login</title>
+<title>BBA BAS | Login</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta content="width=device-width, initial-scale=1" name="viewport" />
 <meta content="" name="description" />
@@ -58,7 +58,7 @@
              -->
 			<!-- zhanghuafeng end  -->
 
-			<h3 class="form-title font-green">BBA ATG DRIVE EVENT</h3>
+			<h3 class="form-title font-green">BBA BAS</h3>
 			<div class="alert alert-danger display-hide">
 				<button class="close" data-close="alert"></button>
 				<span> Please write your ID number and password </span>
@@ -83,7 +83,7 @@
 		<!-- END LOGIN FORM -->
 
 	</div>
-	<div class="copyright">2017 @ BBA ATG DRIVE EVENT System.</div>
+	<div class="copyright">2017 @ BBA BAS System.</div>
 	<![endif]-->
 	<!-- BEGIN CORE PLUGINS -->
 	<script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>

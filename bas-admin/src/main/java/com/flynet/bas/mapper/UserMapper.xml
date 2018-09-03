@@ -21,6 +21,7 @@
 			join work_plan wp on wp.project_id = #{projectId} and wpu.work_plan_id = wp.id
 		</if>
 		where 1 = 1
+			and users.type != 1
 		<if test="loginName != null">
 			and users.login_name = #{loginName}
 		</if>

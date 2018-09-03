@@ -1,53 +1,39 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="ctx" value="${pageContext.request.contextPath}" />
-<!DOCTYPE html>
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <html>
 
-	<head>
-		<meta http-equiv="X-UA-Compatible" content="IE=10">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Grouping management</title>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title></title>
+<link rel="stylesheet" type="text/css" href="../css/main.css" />
+<link rel="stylesheet" type="text/css" href="../css/base.css" />
+<link rel="shortcut icon" href="/image/logo.png" />
+</head>
 
-		<link rel="stylesheet" type="text/css" href="/css/d_main.css" />
-		<link rel="stylesheet" type="text/css" href="/css/main.css" />
-		<link rel="shortcut icon" href="/assets/pages/img/bmw-32.ico" />	
-	</head>
-
-	<body style="width: 100%; height: 100%; background: url(/image/d_bg.jpg) no-repeat 0 0; background-size: cover; background-attachment: fixed;">
-		<div class="content">
-			<div class="d_con">
-				<div class="ma">
-					<div class="dm_banner">
-						<img src="/image/banner.png" class="dm_banner_banner" />
-					</div>
-				</div>
-			</div>
-		</div>
-		<h1 class="bba-title" align="center">BBA Data Monitor</h1>
-		<div class="menu-div">
-			<ul class="menu-group">
-				<li class="menu">
-					<a href="report">Driver<br>Dashboard</a>
-				</li>
-				<li class="menu">
-					<a href="vehicle">Vehicle<br>Information</a>
-				</li>
-				<li class="menu">
-					<a href="transmission">Transmission<br>Statistics</a>
-				</li>
-				<li class="menu">
-					<a href="history">History<br>Data</a>
-				</li>	
-				<li class="menu not-implemented">
-					<a href="javascript:void(0);">Collection<br>Statistics</a>
-				</li>				
-				<li class="menu not-implemented">
-					<a href="javascript:void(0);">Website<br>Administration</a>
-				</li>								
-			</ul>
-		</div>
-	</body>
-
+<body>
+	<div class="home-banner-div">
+		<img src="../image/index.png" class="home-banner" />
+	</div>
+	<h1 class="bba-title" align="center">BBA BAS</h1>
+	<div class="menu-div">
+		<ul class="menu-group">
+			<li class="menu" id=""><a href="/userManagement">Central<br>Management
+			</a></li>
+			<li class="menu" id=""><a href="/vehicleInformation">Vehicle<br>Information
+			</a></li>
+			<li class="menu" id=""><a href="/workplan?projectId=">Work Plan
+			</a></li>
+			<li class="menu" id=""><a href="javascript:;">Topic<br>Summary
+			</a></li>
+			<li class="menu" id=""><a href="javascript:;">Log<br>Tracking
+			</a></li>
+			<li class="menu" id=""><a href="javascript:;">Report
+			</a></li>
+		</ul>
+	</div>
+	<script src="/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="../js/common/page-index.js"></script>
+</body>
 </html>

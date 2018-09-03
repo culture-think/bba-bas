@@ -57,8 +57,9 @@ public class WorkPlanController {
 	 */
 	@RequestMapping(value = "/work-plans", method = RequestMethod.GET)
 	public List<WorkPlan> getWorkPlans(HttpServletRequest request, HttpServletResponse response) {
+		String projectId = request.getParameter("projectId");
 		Map<String, Object> parameters = new HashMap<String, Object>();
-		
+		parameters.put("projectId", projectId);
 		List<WorkPlan> list = workPlanService.getList(parameters);
 		
 		return list;

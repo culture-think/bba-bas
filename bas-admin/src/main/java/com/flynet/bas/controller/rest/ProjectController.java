@@ -28,15 +28,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.flynet.bas.model.Document;
 import com.flynet.bas.model.Project;
 import com.flynet.bas.model.User;
 import com.flynet.bas.model.Vehicle;
+import com.flynet.bas.service.DocumentService;
 import com.flynet.bas.service.ProjectService;
 import com.flynet.bas.service.UserService;
 import com.flynet.bas.service.VehicleService;
@@ -153,4 +157,12 @@ public class ProjectController {
 		return vehicleList;
 	}
 	
+//	@RequestMapping(value = "/projects/upload-picture", method = RequestMethod.POST)
+//	public Project importVariant(final MultipartFile file, String projectName) throws Exception {
+//		if (file.isEmpty()) {
+//			throw new Exception();
+//		}
+//		Project project = projectService.addProject(file, projectName);
+//		return project;
+//	}
 }
