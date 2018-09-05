@@ -42,6 +42,8 @@
 <link href="/assets/layouts/layout/css/custom.css" rel="stylesheet" type="text/css" /> 
 <!-- END THEME LAYOUT STYLES -->
 <link rel="shortcut icon" href="/assets/pages/img/bmw-32.ico" />
+
+<link href="/assets/global/plugins/dropzone/dropzone.min.css" rel="stylesheet" type="text/css" />
 </head>
 <!-- END HEAD -->
 
@@ -109,6 +111,7 @@
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/js/vehicleInformation/ajax.js" type="text/javascript"></script>
 	<script src="/js/vehicleInformation/main.js" type="text/javascript"></script>
+	<script src="/js/vehicleInformation/upload-picture.js" type="text/javascript"></script>
 	<script src="/js/vehicleInformation/add-new.js" type="text/javascript"></script>
 	<script src="/js/vehicleInformation/delete.js" type="text/javascript"></script>
 	<script src="/js/vehicleInformation/edit.js" type="text/javascript"></script>
@@ -121,6 +124,7 @@
 	<script src="/assets/layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
 	<!-- END THEME LAYOUT SCRIPTS -->
 	<script src="/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+	<script src="/assets/global/plugins/dropzone/dropzone.min.js" type="text/javascript"></script>
 </body>
 
 </html>

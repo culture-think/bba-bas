@@ -6,11 +6,9 @@
     		if(entity[control.id] == null){
     			return true;
     		}
-//    		if (control.id == "buildPhases") {
-//    			return;
-//    		}
 			$(control).text(entity[control.id]);
 		});
+    	$("#picture").attr("src",entity.pictureDocument.url||"");
     };
 
     return {

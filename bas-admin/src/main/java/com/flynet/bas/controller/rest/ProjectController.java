@@ -58,6 +58,8 @@ public class ProjectController {
 	private UserService userService;
 	@Autowired(required = false)
 	private VehicleService vehicleService;
+	@Autowired(required = false)
+	private DocumentService documentService;
 	
 	/**
 	 * 获取项目列表
@@ -157,12 +159,10 @@ public class ProjectController {
 		return vehicleList;
 	}
 	
-//	@RequestMapping(value = "/projects/upload-picture", method = RequestMethod.POST)
-//	public Project importVariant(final MultipartFile file, String projectName) throws Exception {
-//		if (file.isEmpty()) {
-//			throw new Exception();
-//		}
-//		Project project = projectService.addProject(file, projectName);
-//		return project;
-//	}
+	@RequestMapping(value = "/projects/upload-picture", method = RequestMethod.POST)
+	public Document importVariant(final MultipartFile file, String projectName) throws Exception {
+		Document document = documentService.add("project.picture", file, null);
+		return document;
+		
+	}
 }

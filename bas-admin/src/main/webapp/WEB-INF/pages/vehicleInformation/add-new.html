@@ -1,5 +1,16 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
 <div id="add-new-modal" class="modal fade" tabindex="-1">
+	<div id="upload-picture-modal" class="form-group">
+		<div class="alert alert-danger display-hide">
+			<button class="close" data-close="alert"></button>
+			Failed to upload!
+		</div>
+		<div class="alert alert-success display-hide">
+			<button class="close" data-close="alert"></button>
+			Uploaded successful!
+		</div>
+		<form action="/api/vehicles/upload-picture" class="dropzone dropzone-file-area" id="dropzone" style="width: 500px; margin-top: 50px;"></form>
+	</div>
 	<form action="" id="form_add-new" method="post" class="form-horizontal" role="form">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -17,6 +28,7 @@
 			<div class="form-group">
 				<label class="control-label col-md-4">Order: </label>
 				<div class="col-md-6">
+					<input type="hidden" id="pictureId" name="pictureId" data-required="1" class="form-control" />
 					<input type="text" id="order" name="order" data-required="1" class="form-control" />
 				</div>
 			</div>

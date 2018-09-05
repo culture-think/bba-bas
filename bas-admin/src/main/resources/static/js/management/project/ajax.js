@@ -1,6 +1,8 @@
 var ProjectAjax = function() {
 	var addProject = function(project) {
-		var result = null;
+		var result = {
+				success: false
+		};
 		$.ajax({
 			url: "/api/projects",
 			type: "POST",
@@ -10,7 +12,8 @@ var ProjectAjax = function() {
         	//设置请求头信息
             contentType: 'application/json;charset=utf-8'
 		}).done(function(data){
-			result = data;
+			result.data = data;
+			result.success = true;
 		}).fail(function(data){
 			console.log(data);
 		});

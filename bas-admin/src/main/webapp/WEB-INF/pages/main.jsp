@@ -25,7 +25,7 @@
 			</a></li>
 			<li class="menu" id=""><a href="/workplan?projectId=">Work Plan
 			</a></li>
-			<li class="menu" id=""><a href="javascript:;">Topic<br>Summary
+			<li class="menu" id=""><a href="/topic">Topic<br>Summary
 			</a></li>
 			<li class="menu" id=""><a href="javascript:;">Log<br>Tracking
 			</a></li>

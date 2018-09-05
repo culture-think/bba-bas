@@ -53,7 +53,7 @@ public class TopicServiceImpl implements TopicService {
 
 	@Override
 	public List<Topic> getList(Map<String, Object> parameters) {
-		parameters = new HashMap<String, Object>();
+//		parameters = new HashMap<String, Object>();
 		parameters.put("category", topicPictureCategory);
 		Map<String, List<Document>> picturesMap = documentDao.getList(parameters).stream().collect(Collectors.groupingBy(Document::getExtendId));
 		

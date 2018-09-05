@@ -60,4 +60,8 @@ public class WebController {
 		model.addAttribute("projectId", projectId);
 		return "workplan/main";
 	}
+	@RequestMapping(value = "/topic")
+	public String topic() {
+		return "topic/main";
+	}
 }

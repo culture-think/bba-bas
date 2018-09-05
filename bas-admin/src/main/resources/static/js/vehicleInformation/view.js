@@ -8,6 +8,7 @@
     		}
 			$(control).text(entity[control.id]);
 		});
+    	$("#picture").attr("src",entity.pictureDocument.url||"");
     };
 
     return {

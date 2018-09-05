@@ -80,7 +80,8 @@
                 		engine: $("#form_add-new #engine").val(),
                 		tire: $("#form_add-new #tire").val(),
                 		vin: $("#form_add-new #vin").val(),
-                		iLevel: $("#form_add-new #iLevel").val()
+                		iLevel: $("#form_add-new #iLevel").val(),
+                		pictureId: $("#form_add-new #pictureId").val()
                 };
                 var result = VehicleAjax.addVehicle(vehicle);
                 if(!result.success){

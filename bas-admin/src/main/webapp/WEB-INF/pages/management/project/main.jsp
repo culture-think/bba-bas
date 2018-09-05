@@ -127,6 +127,7 @@
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
 	<script src="/js/management/project/ajax.js" type="text/javascript"></script>
 	<script src="/js/management/project/main.js" type="text/javascript"></script>
+	<script src="/js/management/project/upload-picture.js" type="text/javascript"></script>
 	<script src="/js/management/project/add-new.js" type="text/javascript"></script>
 	<script src="/js/management/project/delete.js" type="text/javascript"></script>
 	<script src="/js/management/project/edit.js" type="text/javascript"></script>

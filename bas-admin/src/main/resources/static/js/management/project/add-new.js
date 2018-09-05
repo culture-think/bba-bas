@@ -88,7 +88,6 @@
               	}
                 if (result.success) {
                 	  $('#add-new-modal').modal('hide');
-
                       $('#data-table').DataTable().ajax.reload();
                 }
             }
